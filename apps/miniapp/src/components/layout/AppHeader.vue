@@ -12,7 +12,12 @@
       <view class="app-header__brand">
         <image v-if="showLogo" class="app-header__logo" src="/static/logo.png" mode="aspectFill" />
         <view class="app-header__copy">
-          <text class="app-header__title">{{ title }}</text>
+          <view class="app-header__heading">
+            <text class="app-header__title">{{ title }}</text>
+            <text v-if="badge !== undefined && badge !== ''" class="app-header__badge">{{
+              badge
+            }}</text>
+          </view>
           <text v-if="subtitle" class="app-header__subtitle">{{ subtitle }}</text>
         </view>
       </view>
@@ -32,6 +37,7 @@ withDefaults(
     back?: boolean;
     centered?: boolean;
     showLogo?: boolean;
+    badge?: string | number;
   }>(),
   { subtitle: '', back: false, centered: false, showLogo: false },
 );
@@ -46,6 +52,7 @@ onMounted(() => {
   statusBarHeight.value = system.statusBarHeight || 20;
 
   if (typeof uni.getMenuButtonBoundingClientRect === 'function') {
+    // 胶囊位置信息
     const capsule = uni.getMenuButtonBoundingClientRect();
     if (capsule?.height && capsule.top >= statusBarHeight.value) {
       const verticalGap = capsule.top - statusBarHeight.value;
@@ -70,6 +77,7 @@ const headerStyle = computed(() => ({
 .app-header__inner {
   display: flex;
   min-height: 88rpx;
+  margin-bottom: 24rpx;
   align-items: center;
 }
 
@@ -128,6 +136,12 @@ const headerStyle = computed(() => ({
   min-width: 0;
 }
 
+.app-header__heading {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+}
+
 .app-header__title,
 .app-header__subtitle {
   display: block;
@@ -140,6 +154,20 @@ const headerStyle = computed(() => ({
   letter-spacing: 3rpx;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.app-header__badge {
+  flex-shrink: 0;
+  min-width: 36rpx;
+  height: 36rpx;
+  padding: 0 10rpx;
+  border-radius: 18rpx;
+  color: var(--yzm-jade);
+  background: rgba(21, 94, 80, 0.1);
+  font-size: 19rpx;
+  font-weight: 600;
+  line-height: 36rpx;
+  text-align: center;
 }
 
 .app-header__subtitle {

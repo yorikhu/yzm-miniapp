@@ -14,9 +14,7 @@ const items = ref<CartItem[]>(
 
 export function useCart() {
   const selectedItems = computed(() => items.value.filter((item) => item.selected));
-  const selectedCount = computed(() =>
-    selectedItems.value.reduce((sum, item) => sum + item.quantity, 0),
-  );
+  const selectedCount = computed(() => selectedItems.value.length);
   const total = computed(() =>
     selectedItems.value.reduce((sum, item) => {
       const sku = item.product.skus.find((candidate) => candidate.id === item.skuId);

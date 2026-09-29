@@ -14,7 +14,7 @@
       <text class="cart-row__name">{{ item.product.name }}</text>
       <text class="cart-row__sku">{{ sku?.name }} · {{ sku?.spec }}</text>
       <view class="cart-row__footer">
-        <text class="cart-row__price price">¥{{ sku?.price ?? item.product.price }}</text>
+        <text class="cart-row__price price">¥ {{ sku?.price ?? item.product.price }}</text>
         <QuantityStepper
           :model-value="item.quantity"
           @update:model-value="$emit('quantity', $event)"

@@ -1,6 +1,6 @@
 <template>
   <view class="page-shell cart-page">
-    <AppHeader title="购物车" subtitle="好茶已在盏边等你" />
+    <AppHeader title="购物车" subtitle="好茶已在盏边等你" :badge="`${items.length}件`" />
 
     <view class="cart-list">
       <YzmCard v-for="item in items" :key="item.id">
@@ -12,16 +12,6 @@
       </YzmCard>
     </view>
 
-    <YzmCard class="cart-summary" flat>
-      <view class="cart-summary__row">
-        <text>共 {{ items.length }} 件 · 已选 {{ selectedCount }} 件</text>
-        <text
-          >商品合计 <text class="price">¥{{ total }}</text></text
-        >
-      </view>
-      <text class="cart-summary__tip">满 ¥199 顺丰包邮，当前订单已满足包邮条件</text>
-    </YzmCard>
-
     <view class="checkout-bar">
       <view class="checkout-bar__select" @click="toggleAll">
         <view class="checkout-bar__check" :class="{ 'checkout-bar__check--active': allSelected }">
@@ -29,17 +19,28 @@
         </view>
         <text>全选</text>
       </view>
-      <view class="checkout-bar__amount">
-        <text>合计</text><text class="price">¥{{ total }}</text>
+      <view class="checkout-bar__summary">
+        <view class="checkout-bar__amount">
+          <text>合计</text><text class="price">¥ {{ total }}</text>
+        </view>
+        <text
+          class="checkout-bar__tip"
+          :class="{ 'checkout-bar__tip--fulfilled': isFreeShipping }"
+          >{{ shippingTip }}</text
+        >
       </view>
-      <YzmButton :disabled="selectedCount === 0" @click="goCheckout"
-        >结算({{ selectedCount }})</YzmButton
-      >
+      <YzmButton :disabled="selectedCount === 0" @click="goCheckout">
+        <text>结算</text>
+        <text v-if="selectedCount > 0" class="checkout-bar__selected-count">{{
+          selectedCount
+        }}</text>
+      </YzmButton>
     </view>
   </view>
 </template>
 
 <script setup lang="ts">
+import { computed } from 'vue';
 import AppHeader from '@/components/layout/AppHeader.vue';
 import YzmButton from '@/components/base/YzmButton.vue';
 import YzmCard from '@/components/base/YzmCard.vue';
@@ -49,38 +50,25 @@ import { useNavigation } from '@/composables/useNavigation';
 
 const { items, selectedCount, total, allSelected, toggleItem, toggleAll, updateQuantity } =
   useCart();
+const freeShippingThreshold = 199;
+const isFreeShipping = computed(() => total.value >= freeShippingThreshold);
+const shippingTip = computed(() =>
+  isFreeShipping.value
+    ? `已满 ¥ ${freeShippingThreshold}，享顺丰包邮`
+    : `满 ¥ ${freeShippingThreshold} 顺丰包邮，还差 ¥ ${freeShippingThreshold - total.value}`,
+);
 const { goTo } = useNavigation();
 const goCheckout = () => selectedCount.value > 0 && goTo('/pages/checkout/index');
 </script>
 
 <style scoped>
 .cart-page {
-  padding-bottom: 160rpx;
+  padding-bottom: 190rpx;
 }
 
 .cart-list {
   display: grid;
   gap: 18rpx;
-}
-
-.cart-summary {
-  margin-top: 22rpx;
-}
-
-.cart-summary__row {
-  display: flex;
-  padding: 24rpx;
-  justify-content: space-between;
-  color: var(--yzm-ink-soft);
-  font-size: 22rpx;
-}
-
-.cart-summary__tip {
-  display: block;
-  padding: 18rpx 24rpx;
-  border-top: 1rpx solid var(--yzm-line);
-  color: var(--yzm-gold);
-  font-size: 19rpx;
 }
 
 .checkout-bar {
@@ -91,7 +79,7 @@ const goCheckout = () => selectedCount.value > 0 && goTo('/pages/checkout/index'
   left: 20rpx;
   display: flex;
   max-width: 940rpx;
-  min-height: 104rpx;
+  min-height: 124rpx;
   margin: 0 auto;
   padding: 12rpx 14rpx 12rpx 22rpx;
   align-items: center;
@@ -106,19 +94,29 @@ const goCheckout = () => selectedCount.value > 0 && goTo('/pages/checkout/index'
   display: flex;
   align-items: center;
   font-size: 21rpx;
-  gap: 9rpx;
+  gap: 16rpx;
+}
+
+.checkout-bar__summary {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6rpx;
 }
 
 .checkout-bar__check {
   display: flex;
-  width: 34rpx;
-  height: 34rpx;
+  flex: 0 0 38rpx;
+  height: 38rpx;
   align-items: center;
   justify-content: center;
   border: 2rpx solid #9ba5a1;
   border-radius: 50%;
   color: #fff;
-  font-size: 20rpx;
+  font-family: Arial, sans-serif;
+  font-size: 23rpx;
 }
 
 .checkout-bar__check--active {
@@ -128,7 +126,6 @@ const goCheckout = () => selectedCount.value > 0 && goTo('/pages/checkout/index'
 
 .checkout-bar__amount {
   display: flex;
-  flex: 1;
   align-items: baseline;
   justify-content: flex-end;
   font-size: 21rpx;
@@ -139,9 +136,46 @@ const goCheckout = () => selectedCount.value > 0 && goTo('/pages/checkout/index'
   font-size: 32rpx;
 }
 
+.checkout-bar__tip {
+  width: 100%;
+  overflow: hidden;
+  color: var(--yzm-gold);
+  font-size: 18rpx;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.checkout-bar__tip--fulfilled {
+  color: var(--yzm-jade);
+}
+
 .checkout-bar :deep(.yzm-button) {
+  flex-shrink: 0;
+  min-width: 168rpx;
   min-height: 76rpx;
   padding: 0 26rpx;
   font-size: 23rpx;
+}
+
+.checkout-bar :deep(.yzm-button[disabled]) {
+  border: 1rpx solid rgba(23, 60, 53, 0.08);
+  color: #f8f7f3;
+  background: #aeb8b5;
+  box-shadow: none;
+  opacity: 1;
+}
+
+.checkout-bar__selected-count {
+  min-width: 30rpx;
+  height: 30rpx;
+  margin-left: 10rpx;
+  padding: 0 7rpx;
+  border-radius: 15rpx;
+  color: var(--yzm-jade);
+  background: rgba(255, 253, 248, 0.9);
+  font-size: 18rpx;
+  line-height: 30rpx;
+  text-align: center;
 }
 </style>
