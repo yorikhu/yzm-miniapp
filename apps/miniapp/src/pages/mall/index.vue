@@ -7,7 +7,7 @@
       <input v-model="keyword" class="search-bar__input" placeholder="搜索茶名、香气或产地" />
     </view>
 
-    <scroll-view scroll-x class="category-scroll">
+    <scroll-view v-if="categories?.length" scroll-x class="category-scroll">
       <view class="category-list">
         <text
           v-for="category in categories"
