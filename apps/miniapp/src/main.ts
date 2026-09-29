@@ -3,6 +3,7 @@
  */
 import { createSSRApp } from 'vue';
 import App from './App.vue';
+import FloatingCartButton from '@/components/global/FloatingCartButton.vue';
 
 /**
  * 创建并返回 Vue SSR 应用实例。
@@ -11,6 +12,7 @@ import App from './App.vue';
  */
 export function createApp() {
   const app = createSSRApp(App);
+  app.component('FloatingCartButton', FloatingCartButton);
   return {
     app,
   };

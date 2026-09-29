@@ -1,6 +1,7 @@
 <template>
   <view class="page-shell page-shell-no-tab">
-    <AppHeader title="茶品详情" back centered />
+    <AppHeader title="茶品详情" back centered sticky />
+    <FloatingCartButton />
 
     <view class="product-hero">
       <ProductArtwork :tone="product.tone" :name="product.name" />
