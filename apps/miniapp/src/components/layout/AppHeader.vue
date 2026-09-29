@@ -1,5 +1,5 @@
 <template>
-  <view class="app-header" :style="headerStyle">
+  <view class="app-header" :class="{ 'app-header-sticky': isSticky }" :style="headerStyle">
     <view class="app-header-inner" :class="{ 'app-header-inner-center': centered }">
       <view
         v-if="back"
@@ -21,7 +21,10 @@
           <text v-if="subtitle" class="app-header-subtitle">{{ subtitle }}</text>
         </view>
       </view>
-      <view v-if="back" class="app-header-spacer" />
+      <view v-if="$slots.action" class="app-header-action">
+        <slot name="action" />
+      </view>
+      <view v-else-if="back" class="app-header-spacer" />
     </view>
   </view>
 </template>
@@ -41,14 +44,17 @@ const props = withDefaults(
     centered?: boolean;
     showLogo?: boolean;
     badge?: string | number;
+    sticky?: boolean;
   }>(),
-  { subtitle: '', back: false, centered: false, showLogo: false },
+  { subtitle: '', back: false, centered: false, showLogo: false, sticky: false },
 );
 
 const { goBack } = useNavigation();
 const statusBarHeight = ref(20);
 const navigationHeight = ref(44);
 const capsuleInset = ref(0);
+/** @returns 是否通过组件属性显式启用吸顶。 */
+const isSticky = computed(() => props.sticky);
 
 /**
  * 读取设备和胶囊位置，同步页头安全区尺寸。
@@ -74,12 +80,12 @@ onMounted(syncHeaderMetrics);
 /**
  * 生成适配当前设备安全区的页头内联样式。
  *
- * @returns 包含顶部间距、右侧间距和最小高度的样式对象。
+ * @returns 包含安全区尺寸、胶囊避让距离和标题居中偏移的样式对象。
  */
 const headerStyle = computed(() => ({
   paddingTop: `${statusBarHeight.value}px`,
-  paddingRight: `${capsuleInset.value}px`,
   minHeight: `${statusBarHeight.value + navigationHeight.value}px`,
+  '--app-header-capsule-inset': `${capsuleInset.value}px`,
   '--app-header-center-offset': props.centered ? `${capsuleInset.value / 2}px` : '0px',
 }));
 </script>
@@ -87,6 +93,21 @@ const headerStyle = computed(() => ({
 <style scoped>
 .app-header {
   width: 100%;
+  padding-right: var(--app-header-capsule-inset);
+}
+
+.app-header-sticky {
+  position: sticky;
+  z-index: 40;
+  top: 0;
+  width: calc(100% + var(--yzm-page-gutter) + var(--yzm-page-gutter));
+  margin-left: calc(0px - var(--yzm-page-gutter));
+  padding-right: calc(var(--yzm-page-gutter) + var(--app-header-capsule-inset));
+  padding-left: var(--yzm-page-gutter);
+  border-bottom: 1rpx solid rgba(21, 94, 80, 0.08);
+  background: rgba(246, 243, 236, 0.94);
+  box-shadow: 0 8rpx 24rpx rgba(32, 66, 57, 0.04);
+  backdrop-filter: blur(18rpx);
 }
 
 .app-header-inner {
@@ -111,10 +132,17 @@ const headerStyle = computed(() => ({
 }
 
 .app-header-back,
+.app-header-action,
 .app-header-spacer {
   flex: 0 0 64rpx;
   width: 64rpx;
   height: 64rpx;
+}
+
+.app-header-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .app-header-back {

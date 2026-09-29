@@ -8,13 +8,21 @@ page {
   --yzm-paper-light: #fcfaf5;
   --yzm-line: rgba(20, 52, 46, 0.1);
   --yzm-muted: #7b837f;
+  --yzm-page-gutter: 32rpx;
   --yzm-shadow: 0 8rpx 28rpx rgba(44, 42, 34, 0.045);
   min-height: 100%;
   color: var(--yzm-ink);
   background: var(--yzm-paper);
   font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
   font-size: 28rpx;
+  overflow-x: hidden;
 }
+
+/* #ifdef H5 */
+uni-page-body {
+  overflow: visible;
+}
+/* #endif */
 
 view,
 text,
@@ -35,8 +43,7 @@ button::after {
   max-width: 980rpx;
   min-height: 100vh;
   margin: 0 auto;
-  overflow-x: hidden;
-  padding: 0 32rpx 48rpx;
+  padding: 0 var(--yzm-page-gutter) 48rpx;
 }
 
 .page-shell-no-tab {
@@ -64,8 +71,7 @@ button::after {
 }
 
 @media (min-width: 760px) {
-  .page-shell {
-    padding-right: 48rpx;
-    padding-left: 48rpx;
+  page {
+    --yzm-page-gutter: 48rpx;
   }
 }
