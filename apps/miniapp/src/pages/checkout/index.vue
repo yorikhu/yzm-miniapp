@@ -4,7 +4,7 @@
 
     <YzmCard class="address-panel">
       <view class="address-card">
-        <view class="address-card-pin">⌖</view>
+        <image class="address-card-avatar" src="/static/logo.png" mode="aspectFill" />
         <view class="address-card-body">
           <text class="address-card-name">茗主　138****6688</text>
           <text class="address-card-text">云南省普洱市 · 澜沧县惠民镇景迈村 8 号</text>
@@ -36,24 +36,32 @@
       </YzmCard>
     </view>
 
-    <YzmCard class="option-card">
-      <view class="option-row"
-        ><text>配送方式</text><text class="muted">顺丰快递 · 满额包邮 ›</text></view
-      >
-      <view class="option-row"
-        ><text>订单备注</text><input v-model="remark" placeholder="冲泡或礼赠需求"
-      /></view>
-    </YzmCard>
+    <view class="option-section">
+      <YzmCard>
+        <view class="option-card">
+          <view class="option-row"
+            ><text>配送方式</text><text class="muted">顺丰快递 · 满额包邮 ›</text></view
+          >
+          <view class="option-row"
+            ><text>订单备注</text><input v-model="remark" placeholder="冲泡或礼赠需求"
+          /></view>
+        </view>
+      </YzmCard>
+    </view>
 
-    <YzmCard class="amount-card">
-      <view
-        ><text>商品总额</text><text>¥ {{ total }}</text></view
-      >
-      <view><text>运费</text><text>¥ 0</text></view>
-      <view class="amount-card-total"
-        ><text>实付</text><text class="price">¥ {{ total }}</text></view
-      >
-    </YzmCard>
+    <view class="amount-section">
+      <YzmCard>
+        <view class="amount-card">
+          <view
+            ><text>商品总额</text><text>¥ {{ total }}</text></view
+          >
+          <view><text>运费</text><text>¥ 0</text></view>
+          <view class="amount-card-total"
+            ><text>实付</text><text class="price">¥ {{ total }}</text></view
+          >
+        </view>
+      </YzmCard>
+    </view>
 
     <view class="pay-bar">
       <view class="pay-bar-amount">
@@ -113,16 +121,12 @@ const pay = () => goTo(`/pages/payment/success?amount=${total.value}`);
   gap: 18rpx;
 }
 
-.address-card-pin {
-  display: flex;
+.address-card-avatar {
+  flex-shrink: 0;
   width: 58rpx;
   height: 58rpx;
-  align-items: center;
-  justify-content: center;
-  border: 2rpx solid var(--yzm-jade);
+  border: 1rpx solid var(--yzm-line);
   border-radius: 50%;
-  color: var(--yzm-jade);
-  font-size: 29rpx;
 }
 
 .address-card-body {
@@ -225,8 +229,8 @@ const pay = () => goTo(`/pages/payment/success?amount=${total.value}`);
   font-size: 25rpx;
 }
 
-.option-card,
-.amount-card {
+.option-section,
+.amount-section {
   margin-top: 28rpx;
 }
 

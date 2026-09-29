@@ -33,7 +33,7 @@
 import { computed, onMounted, ref } from 'vue';
 import { useNavigation } from '@/composables/useNavigation';
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     title: string;
     subtitle?: string;
@@ -80,6 +80,7 @@ const headerStyle = computed(() => ({
   paddingTop: `${statusBarHeight.value}px`,
   paddingRight: `${capsuleInset.value}px`,
   minHeight: `${statusBarHeight.value + navigationHeight.value}px`,
+  '--app-header-center-offset': props.centered ? `${capsuleInset.value / 2}px` : '0px',
 }));
 </script>
 
@@ -103,6 +104,10 @@ const headerStyle = computed(() => ({
   flex: 1;
   justify-content: center;
   text-align: center;
+}
+
+.app-header-inner-center .app-header-copy {
+  transform: translateX(var(--app-header-center-offset));
 }
 
 .app-header-back,
