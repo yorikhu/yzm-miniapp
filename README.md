@@ -60,6 +60,32 @@ pnpm dev:api
 GET http://localhost:3000/api/health
 ```
 
+### 前端 API 请求
+
+复制前端环境变量示例：
+
+```bash
+cp apps/miniapp/.env.example apps/miniapp/.env.local
+```
+
+`VITE_API_TARGET=local` 使用本地 API，`VITE_API_TARGET=remote` 使用远程 API。微信开发者工具可访问 `127.0.0.1`；真机联调时，需将 `VITE_API_LOCAL_BASE_URL` 设为电脑的局域网 IP，并确保手机与电脑位于同一网络。
+
+业务代码通过统一请求函数访问后端：
+
+```ts
+import { request } from '@/services/request';
+
+interface HealthResponse {
+  status: string;
+  service: string;
+  timestamp: string;
+}
+
+const health = await request<HealthResponse>({ path: '/health' });
+```
+
+请求函数会统一拼接 API 根地址、应用超时设置，并将非 2xx 响应转换为 `ApiRequestError`。
+
 ## 验证与构建
 
 ```bash
