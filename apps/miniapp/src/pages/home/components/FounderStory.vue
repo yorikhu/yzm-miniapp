@@ -36,6 +36,7 @@ import YzmCard from '@/components/base/YzmCard.vue';
   width: 100%;
   height: 420rpx;
   border-radius: 18rpx;
+  background: #dedfdb;
 }
 
 .founder-content {
@@ -71,6 +72,7 @@ import YzmCard from '@/components/base/YzmCard.vue';
   margin-top: 24rpx;
   color: var(--yzm-muted);
   font-size: 19rpx;
+  text-align: right;
 }
 
 @media (min-width: 600px) {

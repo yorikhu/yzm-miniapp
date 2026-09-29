@@ -1,24 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 760">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 648 420" role="img" aria-label="主理人照片占位图">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#dfe5d8"/>
-      <stop offset="1" stop-color="#a7b499"/>
+    <linearGradient id="background" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e8e8e5"/>
+      <stop offset="1" stop-color="#d6d7d3"/>
     </linearGradient>
-    <linearGradient id="cloth" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#365d4f"/>
-      <stop offset="1" stop-color="#173f38"/>
+    <linearGradient id="portrait" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c4c6c2"/>
+      <stop offset="1" stop-color="#b5b8b3"/>
     </linearGradient>
   </defs>
-  <rect width="600" height="760" fill="url(#bg)"/>
-  <circle cx="480" cy="110" r="90" fill="#f5ead0" opacity=".65"/>
-  <path d="M0 590Q150 470 295 590T600 550V760H0Z" fill="#6e856e" opacity=".5"/>
-  <path d="M50 620Q190 520 330 630T600 590V760H0Z" fill="#435f50" opacity=".35"/>
-  <circle cx="300" cy="270" r="108" fill="#dfbd9c"/>
-  <path d="M193 271Q192 118 300 119q122 4 113 158-50-37-76-115-46 80-144 109Z" fill="#283d35"/>
-  <path d="M122 760q18-280 178-280t178 280Z" fill="url(#cloth)"/>
-  <path d="M267 328q34 22 68 0" fill="none" stroke="#9b685a" stroke-width="8" stroke-linecap="round"/>
-  <circle cx="258" cy="274" r="8" fill="#2c3833"/>
-  <circle cx="348" cy="274" r="8" fill="#2c3833"/>
-  <path d="M62 92q75 6 108 67-70 13-108-67Zm19 36q51 4 81 32" fill="#41674f" stroke="#41674f" stroke-width="5"/>
-  <text x="44" y="710" fill="#f8f2e6" font-size="30" letter-spacing="7" font-family="serif">FOUNDER · 粥粥</text>
+  <rect width="648" height="420" fill="url(#background)"/>
+  <path d="M206 390c6-142 48-228 118-228s112 86 118 228H206Z" fill="url(#portrait)"/>
+  <circle cx="324" cy="120" r="42" fill="#c8cac6"/>
 </svg>
