@@ -1,5 +1,10 @@
 <template>
-  <view class="hero paper-texture">
+  <view class="hero">
+    <view class="hero-backdrop">
+      <view class="hero-sun" />
+      <view class="hero-ridge hero-ridge-back" />
+      <view class="hero-ridge hero-ridge-front" />
+    </view>
     <view class="hero-copy">
       <text class="hero-eyebrow">身心有栖 · 茶中见己</text>
       <text class="hero-title">一盏茶，安顿身心</text>
@@ -8,12 +13,6 @@
         <YzmButton @click="$emit('shop')">选一盏茶</YzmButton>
         <YzmButton variant="outline" @click="$emit('practice')">开始静心</YzmButton>
       </view>
-    </view>
-    <view class="hero-tea">
-      <view class="hero-steam hero-steam-one" />
-      <view class="hero-steam hero-steam-two" />
-      <view class="hero-cup"><view class="hero-tea-surface" /></view>
-      <view class="hero-saucer" />
     </view>
   </view>
 </template>
@@ -30,11 +29,68 @@ defineEmits<{ shop: []; practice: [] }>();
 .hero {
   position: relative;
   overflow: hidden;
-  min-height: 520rpx;
-  padding: 64rpx 36rpx 44rpx;
-  border: 1rpx solid var(--yzm-line);
-  border-radius: 28rpx;
-  background-color: var(--yzm-paper-light);
+  min-height: 444rpx;
+  padding: 48rpx 38rpx 38rpx;
+  border: 1rpx solid rgba(21, 94, 80, 0.08);
+  border-radius: 30rpx;
+  background:
+    radial-gradient(circle at 90% 18%, rgba(21, 94, 80, 0.11), transparent 34%),
+    linear-gradient(145deg, #fffdf8 0%, #f7f4ec 58%, #edf1e8 100%);
+  box-shadow: 0 18rpx 52rpx rgba(32, 66, 57, 0.06);
+}
+
+.hero::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1rpx;
+  background: linear-gradient(90deg, transparent, rgba(169, 111, 43, 0.34), transparent);
+  content: '';
+}
+
+.hero-backdrop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 360rpx;
+  height: 100%;
+  pointer-events: none;
+}
+
+.hero-sun {
+  position: absolute;
+  top: 48rpx;
+  right: 58rpx;
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  background: rgba(169, 111, 43, 0.11);
+  box-shadow: 0 0 0 24rpx rgba(255, 253, 248, 0.34);
+}
+
+.hero-ridge {
+  position: absolute;
+  right: -108rpx;
+  width: 420rpx;
+  border-top: 1rpx solid rgba(21, 94, 80, 0.18);
+  border-radius: 50%;
+  transform: rotate(-12deg);
+}
+
+.hero-ridge-back {
+  bottom: 130rpx;
+  height: 190rpx;
+  opacity: 0.55;
+}
+
+.hero-ridge-front {
+  right: -72rpx;
+  bottom: 42rpx;
+  width: 470rpx;
+  height: 220rpx;
+  border-top-color: rgba(21, 94, 80, 0.12);
+  transform: rotate(-7deg);
 }
 
 .hero-copy {
@@ -74,7 +130,7 @@ defineEmits<{ shop: []; practice: [] }>();
 
 .hero-actions {
   display: flex;
-  margin-top: 38rpx;
+  margin-top: 30rpx;
   gap: 14rpx;
 }
 
@@ -82,62 +138,5 @@ defineEmits<{ shop: []; practice: [] }>();
   min-height: 76rpx;
   padding: 0 28rpx;
   font-size: 24rpx;
-}
-
-.hero-tea {
-  position: absolute;
-  right: -18rpx;
-  bottom: 8rpx;
-  width: 300rpx;
-  height: 260rpx;
-  opacity: 0.66;
-}
-
-.hero-cup {
-  position: absolute;
-  right: 50rpx;
-  bottom: 34rpx;
-  width: 184rpx;
-  height: 104rpx;
-  border-radius: 20rpx 20rpx 90rpx 90rpx;
-  background: linear-gradient(180deg, #f6f0df, #d8dfcf);
-}
-
-.hero-tea-surface {
-  width: 150rpx;
-  height: 24rpx;
-  margin: 8rpx auto;
-  border-radius: 50%;
-  background: #a56a2f;
-}
-
-.hero-saucer {
-  position: absolute;
-  right: 20rpx;
-  bottom: 16rpx;
-  width: 240rpx;
-  height: 34rpx;
-  border-radius: 50%;
-  background: rgba(71, 100, 83, 0.2);
-}
-
-.hero-steam {
-  position: absolute;
-  bottom: 138rpx;
-  width: 28rpx;
-  height: 95rpx;
-  border-left: 5rpx solid rgba(23, 63, 56, 0.18);
-  border-radius: 50%;
-  transform: rotate(16deg);
-}
-
-.hero-steam-one {
-  right: 120rpx;
-}
-
-.hero-steam-two {
-  right: 165rpx;
-  height: 76rpx;
-  transform: rotate(-12deg);
 }
 </style>
