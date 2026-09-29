@@ -22,6 +22,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 品牌起源故事组件，展示韵盏茗的地域与文化背景。
+ */
 import SectionHeading from '@/components/base/SectionHeading.vue';
 import YzmCard from '@/components/base/YzmCard.vue';
 </script>

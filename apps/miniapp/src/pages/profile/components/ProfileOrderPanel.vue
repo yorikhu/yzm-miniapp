@@ -13,6 +13,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 个人订单概览组件，展示各订单状态及待处理数量。
+ */
 import YzmCard from '@/components/base/YzmCard.vue';
 
 const orderStates = [

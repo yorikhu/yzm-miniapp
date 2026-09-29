@@ -21,6 +21,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 观察日记分区组件，组合日记发布器与时间线列表。
+ */
 import { ref } from 'vue';
 import SectionHeading from '@/components/base/SectionHeading.vue';
 import YzmCard from '@/components/base/YzmCard.vue';
@@ -28,6 +31,12 @@ import DiaryComposer from './DiaryComposer.vue';
 import { mockJournalEntries } from '@/services/mock/data';
 
 const entries = ref([...mockJournalEntries]);
+/**
+ * 将新发布的日记添加到列表顶部。
+ *
+ * @param content - 用户提交的日记内容。
+ * @returns 无返回值。
+ */
 const publishEntry = (content: string) => {
   entries.value.unshift({
     id: `local-${Date.now()}`,

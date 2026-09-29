@@ -15,6 +15,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 制茶工艺时间线组件，按步骤展示茶叶制作过程。
+ */
 import SectionHeading from '@/components/base/SectionHeading.vue';
 
 const steps = [

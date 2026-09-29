@@ -26,6 +26,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 支付成功页面，展示实付金额、订单号和后续导航入口。
+ */
 import { ref } from 'vue';
 import { onLoad } from '@dcloudio/uni-app';
 import YzmButton from '@/components/base/YzmButton.vue';
@@ -36,7 +39,18 @@ import { useNavigation } from '@/composables/useNavigation';
 const amount = ref('0');
 const orderNumber = mockOrderNumber();
 const { goTab } = useNavigation();
-onLoad((query) => (amount.value = query?.amount ?? '0'));
+
+/**
+ * 从页面参数中读取实付金额。
+ *
+ * @param query - 页面启动查询参数。
+ * @returns 无返回值。
+ */
+const loadPaymentAmount = (query?: Record<string, string>) => {
+  amount.value = query?.amount ?? '0';
+};
+
+onLoad(loadPaymentAmount);
 </script>
 
 <style scoped>

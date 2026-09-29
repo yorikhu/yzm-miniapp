@@ -17,6 +17,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 静心练习页面，组合媒体练习、冥想、阅读与观察日记。
+ */
 import AppHeader from '@/components/layout/AppHeader.vue';
 import SectionHeading from '@/components/base/SectionHeading.vue';
 import PracticeHero from './components/PracticeHero.vue';

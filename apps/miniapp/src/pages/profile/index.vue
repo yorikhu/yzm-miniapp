@@ -17,12 +17,21 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 个人中心页面，展示会员资料、订单状态与账户功能入口。
+ */
 import AppHeader from '@/components/layout/AppHeader.vue';
 import ProfileOverview from './components/ProfileOverview.vue';
 import ProfileOrderPanel from './components/ProfileOrderPanel.vue';
 import ProfileMenu from './components/ProfileMenu.vue';
 import { mockProfile } from '@/services/mock/data';
 
+/**
+ * 为尚未开放的菜单功能显示提示。
+ *
+ * @param label - 用户选择的功能名称。
+ * @returns uni-app 的 Toast 调用结果。
+ */
 const showComing = (label: string) =>
   uni.showToast({ title: `${label}功能即将开放`, icon: 'none' });
 </script>

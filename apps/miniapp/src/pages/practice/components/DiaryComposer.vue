@@ -33,6 +33,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 观察日记编辑组件，提供文本输入、表达建议、语音入口与提交状态。
+ */
 import { ref, watch } from 'vue';
 import YzmButton from '@/components/base/YzmButton.vue';
 import YzmCard from '@/components/base/YzmCard.vue';
@@ -42,27 +45,52 @@ const content = ref('');
 const suggestion = ref('');
 const sending = ref(false);
 
-watch(content, (value) => {
+/**
+ * 根据日记内容长度和情绪词生成表达建议。
+ *
+ * @param value - 当前日记文本。
+ * @returns 无返回值。
+ */
+const updateSuggestion = (value: string) => {
   if (value.length < 18) suggestion.value = '';
   else if (/很烦|讨厌|崩溃|气死/.test(value))
     suggestion.value = '试着去掉评价词，只写下你看见、听见和身体感受到的事实。';
   else suggestion.value = '描述清晰、具体，已经很好地把观察与判断分开了。';
-});
+};
 
+watch(content, updateSuggestion);
+
+/**
+ * 提示用户语音能力需要真机授权。
+ *
+ * @returns 无返回值。
+ */
 const startVoice = () => {
   uni.showToast({ title: '语音能力将在真机授权后启用', icon: 'none' });
 };
 
+/**
+ * 完成日记发布，清理编辑状态并向父组件发出内容。
+ *
+ * @returns 无返回值。
+ */
+const completeSubmission = () => {
+  emit('published', content.value);
+  content.value = '';
+  suggestion.value = '';
+  sending.value = false;
+  uni.showToast({ title: '小雀已出发，审核后公开', icon: 'none' });
+};
+
+/**
+ * 校验日记内容并启动模拟发布流程。
+ *
+ * @returns 无返回值。
+ */
 const submit = () => {
   if (content.value.length < 8 || sending.value) return;
   sending.value = true;
-  setTimeout(() => {
-    emit('published', content.value);
-    content.value = '';
-    suggestion.value = '';
-    sending.value = false;
-    uni.showToast({ title: '小雀已出发，审核后公开', icon: 'none' });
-  }, 900);
+  setTimeout(completeSubmission, 900);
 };
 </script>
 

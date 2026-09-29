@@ -54,6 +54,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 茶品详情页面，管理商品加载、SKU 选择、数量与购买操作。
+ */
 import { computed, ref } from 'vue';
 import { onLoad } from '@dcloudio/uni-app';
 import AppHeader from '@/components/layout/AppHeader.vue';
@@ -72,19 +75,38 @@ const selectedSkuId = ref(product.value.skus[0].id);
 const quantity = ref(1);
 const { addToCart } = useCart();
 const { goTo } = useNavigation();
+/** @returns 当前选中的商品 SKU，未匹配时返回 undefined。 */
 const selectedSku = computed(() =>
   product.value.skus.find((sku) => sku.id === selectedSkuId.value),
 );
 
-onLoad((query) => {
+/**
+ * 根据页面参数加载商品，并默认选中第一个 SKU。
+ *
+ * @param query - 包含商品 id 的页面查询参数。
+ * @returns 无返回值。
+ */
+const loadProduct = (query?: Record<string, string>) => {
   const matched = mockProducts.find((item) => item.id === query?.id);
   if (matched) {
     product.value = matched;
     selectedSkuId.value = matched.skus[0].id;
   }
-});
+};
 
+onLoad(loadProduct);
+
+/**
+ * 将当前 SKU 和数量加入购物车。
+ *
+ * @returns 无返回值。
+ */
 const add = () => addToCart(product.value, selectedSkuId.value, quantity.value);
+/**
+ * 将当前 SKU 加入购物车后直接进入确认订单页。
+ *
+ * @returns 无返回值。
+ */
 const buyNow = () => {
   addToCart(product.value, selectedSkuId.value, quantity.value);
   goTo('/pages/checkout/index');

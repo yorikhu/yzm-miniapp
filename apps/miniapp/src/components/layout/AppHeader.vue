@@ -27,6 +27,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 应用页头组件，适配状态栏、小程序胶囊、返回入口与标题徽标。
+ */
 import { computed, onMounted, ref } from 'vue';
 import { useNavigation } from '@/composables/useNavigation';
 
@@ -47,12 +50,16 @@ const statusBarHeight = ref(20);
 const navigationHeight = ref(44);
 const capsuleInset = ref(0);
 
-onMounted(() => {
+/**
+ * 读取设备和胶囊位置，同步页头安全区尺寸。
+ *
+ * @returns 无返回值。
+ */
+const syncHeaderMetrics = () => {
   const system = uni.getSystemInfoSync();
   statusBarHeight.value = system.statusBarHeight || 20;
 
   if (typeof uni.getMenuButtonBoundingClientRect === 'function') {
-    // 胶囊位置信息
     const capsule = uni.getMenuButtonBoundingClientRect();
     if (capsule?.height && capsule.top >= statusBarHeight.value) {
       const verticalGap = capsule.top - statusBarHeight.value;
@@ -60,8 +67,15 @@ onMounted(() => {
       capsuleInset.value = Math.max(0, system.windowWidth - capsule.left - 16);
     }
   }
-});
+};
 
+onMounted(syncHeaderMetrics);
+
+/**
+ * 生成适配当前设备安全区的页头内联样式。
+ *
+ * @returns 包含顶部间距、右侧间距和最小高度的样式对象。
+ */
 const headerStyle = computed(() => ({
   paddingTop: `${statusBarHeight.value}px`,
   paddingRight: `${capsuleInset.value}px`,

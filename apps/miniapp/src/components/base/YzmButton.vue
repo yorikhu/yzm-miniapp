@@ -10,6 +10,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 通用按钮组件，统一按钮变体、块级布局和禁用状态。
+ */
 withDefaults(
   defineProps<{
     variant?: 'primary' | 'outline' | 'ghost' | 'gold';

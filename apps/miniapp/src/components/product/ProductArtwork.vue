@@ -11,6 +11,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 茶品艺术图组件，根据色调和品名绘制商品占位视觉。
+ */
 import type { ArtworkTone } from '@/types';
 
 defineProps<{ tone: ArtworkTone; name: string }>();

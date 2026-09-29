@@ -25,6 +25,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 购物车商品行组件，展示 SKU、价格、数量和选中状态。
+ */
 import { computed } from 'vue';
 import ProductArtwork from '@/components/product/ProductArtwork.vue';
 import QuantityStepper from '@/components/product/QuantityStepper.vue';
@@ -32,6 +35,7 @@ import type { CartItem } from '@/types';
 
 const props = defineProps<{ item: CartItem }>();
 defineEmits<{ toggle: []; quantity: [value: number] }>();
+/** @returns 当前购物车条目对应的 SKU 信息。 */
 const sku = computed(() => props.item.product.skus.find((item) => item.id === props.item.skuId));
 </script>
 

@@ -24,6 +24,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 商城茶品卡片组件，展示商品摘要并处理选择事件。
+ */
 import YzmCard from '@/components/base/YzmCard.vue';
 import ProductArtwork from '@/components/product/ProductArtwork.vue';
 import type { Product } from '@/types';

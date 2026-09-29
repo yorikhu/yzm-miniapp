@@ -45,6 +45,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 商城页面，提供茶品分类、关键词筛选与详情页导航。
+ */
 import { computed, ref } from 'vue';
 import AppHeader from '@/components/layout/AppHeader.vue';
 import SectionHeading from '@/components/base/SectionHeading.vue';
@@ -58,6 +61,7 @@ const activeCategory = ref('全部');
 const categories = ['全部', ...new Set(mockProducts.map((product) => product.category))];
 const { goTo } = useNavigation();
 
+/** @returns 同时匹配当前分类和搜索关键词的商品列表。 */
 const filteredProducts = computed(() =>
   mockProducts.filter((product) => {
     const categoryMatched =
@@ -71,6 +75,12 @@ const filteredProducts = computed(() =>
   }),
 );
 
+/**
+ * 打开选中商品的详情页。
+ *
+ * @param product - 待查看的商品。
+ * @returns uni-app 的页面跳转结果。
+ */
 const openProduct = (product: Product) => goTo(`/pages/product/detail?id=${product.id}`);
 </script>
 

@@ -35,6 +35,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 个人资料概览组件，展示会员信息、积分和权益数据。
+ */
 import YzmCard from '@/components/base/YzmCard.vue';
 import type { UserProfile } from '@/types';
 

@@ -40,6 +40,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 购物车页面，管理 SKU 选择、数量、包邮门槛和结算入口。
+ */
 import { computed } from 'vue';
 import AppHeader from '@/components/layout/AppHeader.vue';
 import YzmButton from '@/components/base/YzmButton.vue';
@@ -51,13 +54,20 @@ import { useNavigation } from '@/composables/useNavigation';
 const { items, selectedCount, total, allSelected, toggleItem, toggleAll, updateQuantity } =
   useCart();
 const freeShippingThreshold = 199;
+/** @returns 已选商品金额是否达到包邮门槛。 */
 const isFreeShipping = computed(() => total.value >= freeShippingThreshold);
+/** @returns 根据当前已选金额生成的包邮状态文案。 */
 const shippingTip = computed(() =>
   isFreeShipping.value
     ? `已满 ¥ ${freeShippingThreshold}，享顺丰包邮`
     : `满 ¥ ${freeShippingThreshold} 顺丰包邮，还差 ¥ ${freeShippingThreshold - total.value}`,
 );
 const { goTo } = useNavigation();
+/**
+ * 在存在已选 SKU 时进入确认订单页。
+ *
+ * @returns 导航结果；无已选 SKU 时返回 false。
+ */
 const goCheckout = () => selectedCount.value > 0 && goTo('/pages/checkout/index');
 </script>
 

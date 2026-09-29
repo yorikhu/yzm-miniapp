@@ -65,6 +65,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 确认订单页面，展示已选商品、配送信息、备注和应付金额。
+ */
 import { ref } from 'vue';
 import AppHeader from '@/components/layout/AppHeader.vue';
 import SectionHeading from '@/components/base/SectionHeading.vue';
@@ -78,7 +81,18 @@ import type { CartItem } from '@/types';
 const remark = ref('');
 const { selectedItems, total } = useCart();
 const { goTo } = useNavigation();
+/**
+ * 查找购物车条目当前选中的 SKU。
+ *
+ * @param item - 购物车条目。
+ * @returns 匹配的 SKU，未找到时返回 undefined。
+ */
 const findSku = (item: CartItem) => item.product.skus.find((sku) => sku.id === item.skuId);
+/**
+ * 携带当前应付金额进入支付成功页。
+ *
+ * @returns uni-app 的页面跳转结果。
+ */
 const pay = () => goTo(`/pages/payment/success?amount=${total.value}`);
 </script>
 

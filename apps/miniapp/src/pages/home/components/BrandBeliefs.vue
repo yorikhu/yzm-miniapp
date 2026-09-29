@@ -14,6 +14,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 品牌信念组件，展示韵盏茗的三项核心价值。
+ */
 import SectionHeading from '@/components/base/SectionHeading.vue';
 import YzmCard from '@/components/base/YzmCard.vue';
 

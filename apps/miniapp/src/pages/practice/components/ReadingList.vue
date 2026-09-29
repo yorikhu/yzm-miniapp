@@ -18,6 +18,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 阅读推荐组件，展示静心与成长主题书单。
+ */
 import SectionHeading from '@/components/base/SectionHeading.vue';
 import YzmCard from '@/components/base/YzmCard.vue';
 

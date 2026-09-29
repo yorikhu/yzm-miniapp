@@ -19,6 +19,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 首页主视觉组件，提供通往商城和静心练习的主要入口。
+ */
 import YzmButton from '@/components/base/YzmButton.vue';
 defineEmits<{ shop: []; practice: [] }>();
 </script>

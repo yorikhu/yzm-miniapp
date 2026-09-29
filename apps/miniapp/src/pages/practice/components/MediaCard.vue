@@ -21,6 +21,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 练习媒体卡片组件，展示一项音频、视频或文章练习。
+ */
 import YzmCard from '@/components/base/YzmCard.vue';
 import type { Technique } from '@/types';
 

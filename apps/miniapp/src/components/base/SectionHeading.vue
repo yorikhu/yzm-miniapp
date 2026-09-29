@@ -13,6 +13,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 通用分区标题组件，展示主标题、眉标和可选操作入口。
+ */
 defineProps<{ title: string; eyebrow?: string; action?: string }>();
 defineEmits<{ action: [] }>();
 </script>

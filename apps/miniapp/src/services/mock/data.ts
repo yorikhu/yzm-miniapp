@@ -1,3 +1,6 @@
+/**
+ * 前端演示数据，提供茶品、练习、日记、会员与订单模拟内容。
+ */
 import Chance from 'chance';
 import type { JournalEntry, Product, Technique, UserProfile } from '@/types';
 
@@ -152,6 +155,11 @@ export const mockProfile: UserProfile = {
   coupons: mock.integer({ min: 2, max: 6 }),
 };
 
+/**
+ * 生成包含当前日期和四位随机数的模拟订单号。
+ *
+ * @returns 以 YZM 开头的订单号。
+ */
 export const mockOrderNumber = () =>
   `YZM${new Date().toISOString().slice(0, 10).replace(/-/g, '')}${mock.string({
     pool: '0123456789',

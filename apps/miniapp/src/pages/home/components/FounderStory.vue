@@ -17,6 +17,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 主理人故事组件，展示品牌创办者与初心介绍。
+ */
 import SectionHeading from '@/components/base/SectionHeading.vue';
 import YzmCard from '@/components/base/YzmCard.vue';
 </script>

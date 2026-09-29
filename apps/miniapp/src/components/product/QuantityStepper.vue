@@ -9,6 +9,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 商品数量步进器组件，用于增减数量并确保最小值为 1。
+ */
 defineProps<{ modelValue: number }>();
 defineEmits<{ 'update:modelValue': [value: number] }>();
 </script>

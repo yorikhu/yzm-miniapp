@@ -17,6 +17,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 个人中心菜单组件，展示账户功能入口及附加状态。
+ */
 import YzmCard from '@/components/base/YzmCard.vue';
 
 const props = defineProps<{ coupons: number }>();

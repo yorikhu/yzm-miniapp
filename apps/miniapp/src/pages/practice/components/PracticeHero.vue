@@ -9,6 +9,12 @@
   </view>
 </template>
 
+<script setup lang="ts">
+/**
+ * 静心练习页主视觉组件，传达页面主题与引导文案。
+ */
+</script>
+
 <style scoped>
 .practice-hero {
   position: relative;

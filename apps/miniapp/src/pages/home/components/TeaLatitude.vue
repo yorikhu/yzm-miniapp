@@ -25,6 +25,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 茶品产地组件，展示推荐茶品并向外发出购买与选择事件。
+ */
 import SectionHeading from '@/components/base/SectionHeading.vue';
 import ProductArtwork from '@/components/product/ProductArtwork.vue';
 import type { Product } from '@/types';

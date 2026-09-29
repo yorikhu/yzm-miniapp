@@ -15,6 +15,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 冥想练习网格组件，展示可选的冥想类型与时长。
+ */
 import SectionHeading from '@/components/base/SectionHeading.vue';
 import YzmCard from '@/components/base/YzmCard.vue';
 

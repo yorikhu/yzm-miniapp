@@ -1,5 +1,11 @@
+/**
+ * 前端领域模型与组件共享类型定义。
+ */
+
+/** 商品艺术图可用的视觉色调。 */
 export type ArtworkTone = 'amber' | 'jade' | 'mist' | 'earth' | 'rose';
 
+/** 商品的可购买规格。 */
 export interface ProductSku {
   id: string;
   name: string;
@@ -7,6 +13,7 @@ export interface ProductSku {
   price: number;
 }
 
+/** 商城茶品资料。 */
 export interface Product {
   id: string;
   name: string;
@@ -23,6 +30,7 @@ export interface Product {
   skus: ProductSku[];
 }
 
+/** 购物车中的单个 SKU 条目。 */
 export interface CartItem {
   id: string;
   product: Product;
@@ -31,6 +39,7 @@ export interface CartItem {
   selected: boolean;
 }
 
+/** 静心练习媒体内容。 */
 export interface Technique {
   id: string;
   eyebrow: string;
@@ -41,6 +50,7 @@ export interface Technique {
   tone: ArtworkTone;
 }
 
+/** 用户发布的观察日记。 */
 export interface JournalEntry {
   id: string;
   author: string;
@@ -49,6 +59,7 @@ export interface JournalEntry {
   likes: number;
 }
 
+/** 个人中心会员资料。 */
 export interface UserProfile {
   name: string;
   level: string;

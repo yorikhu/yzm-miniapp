@@ -5,6 +5,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 通用卡片容器组件，提供统一的边框、圆角和阴影外观。
+ */
 withDefaults(defineProps<{ flat?: boolean }>(), { flat: false });
 </script>
 

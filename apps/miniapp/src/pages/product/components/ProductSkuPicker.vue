@@ -14,6 +14,9 @@
 </template>
 
 <script setup lang="ts">
+/**
+ * 商品 SKU 选择组件，展示可用规格并同步当前选中值。
+ */
 import type { ProductSku } from '@/types';
 
 defineProps<{ skus: ProductSku[]; modelValue: string }>();
