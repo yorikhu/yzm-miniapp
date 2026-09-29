@@ -28,9 +28,10 @@
           </view>
           <view class="order-item-price">
             <text>×{{ item.quantity }}</text>
-            <text class="price"
-              >¥ {{ (findSku(item)?.price ?? item.product.price) * item.quantity }}</text
-            >
+            <MoneyAmount
+              :amount="(findSku(item)?.price ?? item.product.price) * item.quantity"
+              size="25rpx"
+            />
           </view>
         </view>
       </YzmCard>
@@ -52,13 +53,18 @@
     <view class="amount-section">
       <YzmCard>
         <view class="amount-card">
-          <view
-            ><text>商品总额</text><text>¥ {{ total }}</text></view
-          >
-          <view><text>运费</text><text>¥ 0</text></view>
-          <view class="amount-card-total"
-            ><text>实付</text><text class="price">¥ {{ total }}</text></view
-          >
+          <view>
+            <text>商品总额</text>
+            <MoneyAmount :amount="total" size="22rpx" color="var(--yzm-ink-soft)" />
+          </view>
+          <view>
+            <text>运费</text>
+            <MoneyAmount :amount="0" size="22rpx" color="var(--yzm-ink-soft)" />
+          </view>
+          <view class="amount-card-total">
+            <text>实付</text>
+            <MoneyAmount :amount="total" size="34rpx" />
+          </view>
         </view>
       </YzmCard>
     </view>
@@ -66,7 +72,7 @@
     <view class="pay-bar">
       <view class="pay-bar-amount">
         <text>实付</text>
-        <text class="price">¥ {{ total }}</text>
+        <MoneyAmount :amount="total" size="38rpx" />
       </view>
       <YzmButton @click="pay">立即支付</YzmButton>
     </view>
@@ -79,6 +85,7 @@
  */
 import { ref } from 'vue';
 import AppHeader from '@/components/layout/AppHeader.vue';
+import MoneyAmount from '@/components/base/MoneyAmount.vue';
 import SectionHeading from '@/components/base/SectionHeading.vue';
 import YzmButton from '@/components/base/YzmButton.vue';
 import YzmCard from '@/components/base/YzmCard.vue';
@@ -224,9 +231,8 @@ const pay = () => goTo(`/pages/payment/success?amount=${total.value}`);
   font-size: 19rpx;
 }
 
-.order-item-price .price {
+.order-item-price :deep(.money-amount) {
   margin-top: 12rpx;
-  font-size: 25rpx;
 }
 
 .option-section,
@@ -282,10 +288,6 @@ const pay = () => goTo(`/pages/payment/success?amount=${total.value}`);
   font-weight: 650;
 }
 
-.amount-card-total .price {
-  font-size: 34rpx;
-}
-
 .pay-bar {
   position: fixed;
   z-index: 21;
@@ -311,10 +313,6 @@ const pay = () => goTo(`/pages/payment/success?amount=${total.value}`);
   align-items: baseline;
   justify-content: flex-end;
   gap: 8rpx;
-}
-
-.pay-bar .price {
-  font-size: 38rpx;
 }
 
 .pay-bar :deep(.yzm-button) {

@@ -13,7 +13,7 @@
         </view>
         <view class="product-card-footer">
           <view>
-            <text class="product-card-price price">¥{{ product.price }}</text>
+            <MoneyAmount :amount="product.price" size="34rpx" />
             <text class="product-card-sales">已售 {{ product.sales }}</text>
           </view>
           <view class="product-card-arrow">选购 ›</view>
@@ -28,6 +28,7 @@
  * 商城茶品卡片组件，展示商品摘要并处理选择事件。
  */
 import YzmCard from '@/components/base/YzmCard.vue';
+import MoneyAmount from '@/components/base/MoneyAmount.vue';
 import ProductArtwork from '@/components/product/ProductArtwork.vue';
 import type { Product } from '@/types';
 
@@ -94,10 +95,6 @@ defineEmits<{ select: [product: Product] }>();
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-}
-
-.product-card-price {
-  font-size: 34rpx;
 }
 
 .product-card-sales {

@@ -21,11 +21,21 @@
       </view>
       <view class="checkout-bar-summary">
         <view class="checkout-bar-amount">
-          <text>合计</text><text class="price">¥ {{ total }}</text>
+          <text>合计</text><MoneyAmount :amount="total" size="32rpx" />
         </view>
-        <text class="checkout-bar-tip" :class="{ 'checkout-bar-tip-fulfilled': isFreeShipping }">{{
-          shippingTip
-        }}</text>
+        <view class="checkout-bar-tip" :class="{ 'checkout-bar-tip-fulfilled': isFreeShipping }">
+          <template v-if="isFreeShipping">
+            <text>已满</text>
+            <MoneyAmount :amount="freeShippingThreshold" size="18rpx" color="var(--yzm-jade)" />
+            <text>，享顺丰包邮</text>
+          </template>
+          <template v-else>
+            <text>满</text>
+            <MoneyAmount :amount="freeShippingThreshold" size="18rpx" />
+            <text>顺丰包邮，还差</text>
+            <MoneyAmount :amount="remainingShippingAmount" size="18rpx" />
+          </template>
+        </view>
       </view>
       <YzmButton :disabled="selectedCount === 0" @click="goCheckout">
         <text>结算</text>
@@ -43,6 +53,7 @@
  */
 import { computed } from 'vue';
 import AppHeader from '@/components/layout/AppHeader.vue';
+import MoneyAmount from '@/components/base/MoneyAmount.vue';
 import YzmButton from '@/components/base/YzmButton.vue';
 import YzmCard from '@/components/base/YzmCard.vue';
 import CartProductRow from './components/CartProductRow.vue';
@@ -54,12 +65,8 @@ const { items, selectedCount, total, allSelected, toggleItem, toggleAll, updateQ
 const freeShippingThreshold = 199;
 /** @returns 已选商品金额是否达到包邮门槛。 */
 const isFreeShipping = computed(() => total.value >= freeShippingThreshold);
-/** @returns 根据当前已选金额生成的包邮状态文案。 */
-const shippingTip = computed(() =>
-  isFreeShipping.value
-    ? `已满 ¥ ${freeShippingThreshold}，享顺丰包邮`
-    : `满 ¥ ${freeShippingThreshold} 顺丰包邮，还差 ¥ ${freeShippingThreshold - total.value}`,
-);
+/** @returns 距离包邮门槛尚差的金额。 */
+const remainingShippingAmount = computed(() => Math.max(0, freeShippingThreshold - total.value));
 const { goTo } = useNavigation();
 /**
  * 在存在已选 SKU 时进入确认订单页。
@@ -140,18 +147,18 @@ const goCheckout = () => selectedCount.value > 0 && goTo('/pages/checkout/index'
   gap: 8rpx;
 }
 
-.checkout-bar-amount .price {
-  font-size: 32rpx;
-}
-
 .checkout-bar-tip {
+  display: flex;
   width: 100%;
   overflow: hidden;
+  align-items: baseline;
+  justify-content: flex-end;
   color: var(--yzm-gold);
   font-size: 18rpx;
   text-align: right;
   text-overflow: ellipsis;
   white-space: nowrap;
+  gap: 4rpx;
 }
 
 .checkout-bar-tip-fulfilled {

@@ -6,7 +6,7 @@
       <text class="success-page-title">支付成功</text>
       <view class="success-page-amount">
         <text>实付</text>
-        <text class="price">¥ {{ amount }}</text>
+        <MoneyAmount :amount="amount" size="38rpx" />
       </view>
       <text class="success-page-message">我们将尽快为您发出</text>
 
@@ -44,6 +44,7 @@
 import { ref } from 'vue';
 import { onLoad } from '@dcloudio/uni-app';
 import AppHeader from '@/components/layout/AppHeader.vue';
+import MoneyAmount from '@/components/base/MoneyAmount.vue';
 import YzmButton from '@/components/base/YzmButton.vue';
 import YzmCard from '@/components/base/YzmCard.vue';
 import { mockOrderNumber } from '@/services/mock/data';
@@ -132,10 +133,6 @@ onLoad(loadPaymentAmount);
   color: var(--yzm-ink-soft);
   font-size: 21rpx;
   gap: 10rpx;
-}
-
-.success-page-amount .price {
-  font-size: 38rpx;
 }
 
 .success-page-message {

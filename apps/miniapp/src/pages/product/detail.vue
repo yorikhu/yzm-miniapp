@@ -12,10 +12,14 @@
       <text class="product-main-title">{{ product.name }}</text>
       <text class="product-main-subtitle">{{ product.subtitle }}</text>
       <view class="product-main-meta">
-        <text class="product-main-price price">¥{{ selectedSku?.price ?? product.price }}</text>
-        <text v-if="product.originalPrice" class="product-main-original"
-          >¥{{ product.originalPrice }}</text
-        >
+        <MoneyAmount :amount="selectedSku?.price ?? product.price" size="44rpx" />
+        <MoneyAmount
+          v-if="product.originalPrice"
+          :amount="product.originalPrice"
+          size="22rpx"
+          color="#a7aaa7"
+          strikethrough
+        />
         <text class="product-main-sales">已售 {{ product.sales }}</text>
       </view>
     </view>
@@ -60,6 +64,7 @@
 import { computed, ref } from 'vue';
 import { onLoad } from '@dcloudio/uni-app';
 import AppHeader from '@/components/layout/AppHeader.vue';
+import MoneyAmount from '@/components/base/MoneyAmount.vue';
 import SectionHeading from '@/components/base/SectionHeading.vue';
 import YzmButton from '@/components/base/YzmButton.vue';
 import YzmCard from '@/components/base/YzmCard.vue';
@@ -179,16 +184,6 @@ const buyNow = () => {
   margin-top: 24rpx;
   align-items: baseline;
   gap: 14rpx;
-}
-
-.product-main-price {
-  font-size: 44rpx;
-}
-
-.product-main-original {
-  color: #a7aaa7;
-  font-size: 22rpx;
-  text-decoration: line-through;
 }
 
 .product-main-sales {

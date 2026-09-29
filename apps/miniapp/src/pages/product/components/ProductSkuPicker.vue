@@ -8,7 +8,10 @@
       @click="$emit('update:modelValue', sku.id)"
     >
       <text class="sku-picker-name">{{ sku.name }}</text>
-      <text class="sku-picker-meta">{{ sku.spec }} · ¥{{ sku.price }}</text>
+      <view class="sku-picker-meta">
+        <text>{{ sku.spec }} ·</text>
+        <MoneyAmount :amount="sku.price" size="21rpx" color="var(--yzm-muted)" />
+      </view>
     </view>
   </view>
 </template>
@@ -17,6 +20,7 @@
 /**
  * 商品 SKU 选择组件，展示可用规格并同步当前选中值。
  */
+import MoneyAmount from '@/components/base/MoneyAmount.vue';
 import type { ProductSku } from '@/types';
 
 defineProps<{ skus: ProductSku[]; modelValue: string }>();
@@ -54,8 +58,11 @@ defineEmits<{ 'update:modelValue': [value: string] }>();
 }
 
 .sku-picker-meta {
+  display: flex;
   margin-top: 4rpx;
+  align-items: baseline;
   color: var(--yzm-muted);
   font-size: 21rpx;
+  gap: 5rpx;
 }
 </style>

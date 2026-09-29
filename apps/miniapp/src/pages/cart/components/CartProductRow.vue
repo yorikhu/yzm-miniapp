@@ -14,7 +14,7 @@
       <text class="cart-row-name">{{ item.product.name }}</text>
       <text class="cart-row-sku">{{ sku?.name }} · {{ sku?.spec }}</text>
       <view class="cart-row-footer">
-        <text class="cart-row-price price">¥ {{ sku?.price ?? item.product.price }}</text>
+        <MoneyAmount :amount="sku?.price ?? item.product.price" size="29rpx" />
         <QuantityStepper
           :model-value="item.quantity"
           @update:model-value="$emit('quantity', $event)"
@@ -29,6 +29,7 @@
  * 购物车商品行组件，展示 SKU、价格、数量和选中状态。
  */
 import { computed } from 'vue';
+import MoneyAmount from '@/components/base/MoneyAmount.vue';
 import ProductArtwork from '@/components/product/ProductArtwork.vue';
 import QuantityStepper from '@/components/product/QuantityStepper.vue';
 import type { CartItem } from '@/types';
@@ -107,10 +108,6 @@ const sku = computed(() => props.item.product.skus.find((item) => item.id === pr
   margin-top: 24rpx;
   align-items: center;
   justify-content: space-between;
-}
-
-.cart-row-price {
-  font-size: 29rpx;
 }
 
 .cart-row-footer :deep(.stepper) {

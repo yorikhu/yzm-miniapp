@@ -59,12 +59,6 @@ button::after {
   white-space: nowrap;
 }
 
-.price {
-  color: var(--yzm-gold);
-  font-family: 'Times New Roman', Georgia, serif;
-  font-weight: 600;
-}
-
 .muted {
   color: var(--yzm-muted);
 }
