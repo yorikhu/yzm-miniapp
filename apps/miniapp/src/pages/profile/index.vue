@@ -46,9 +46,9 @@ const showComing = (label: string) =>
   margin-top: 40rpx;
   align-items: center;
   justify-content: center;
-  color: var(--yzm-muted);
+  color: var(--yzm-ink-soft);
   font-family: 'Songti SC', 'STSong', serif;
-  font-size: 19rpx;
+  font-size: 22rpx;
   gap: 12rpx;
 }
 

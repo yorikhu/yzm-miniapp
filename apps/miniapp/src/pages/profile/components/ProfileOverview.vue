@@ -7,7 +7,7 @@
           <text class="profile-card-name">{{ profile.name }}</text>
           <text class="profile-card-level">会员等级 · {{ profile.level }}</text>
         </view>
-        <text class="profile-card-arrow">›</text>
+        <view class="profile-card-arrow" />
       </view>
     </YzmCard>
 
@@ -76,13 +76,17 @@ defineProps<{ profile: UserProfile }>();
 
 .profile-card-level {
   margin-top: 8rpx;
-  color: var(--yzm-muted);
-  font-size: 21rpx;
+  color: var(--yzm-ink-soft);
+  font-size: 23rpx;
 }
 
 .profile-card-arrow {
-  color: var(--yzm-muted);
-  font-size: 38rpx;
+  width: 15rpx;
+  height: 15rpx;
+  margin-right: 4rpx;
+  border-top: 2rpx solid rgba(23, 60, 53, 0.5);
+  border-right: 2rpx solid rgba(23, 60, 53, 0.5);
+  transform: rotate(45deg);
 }
 
 .profile-stats-card {
@@ -111,15 +115,15 @@ defineProps<{ profile: UserProfile }>();
 }
 
 .profile-stats-label {
-  color: var(--yzm-muted);
-  font-size: 18rpx;
+  color: var(--yzm-ink-soft);
+  font-size: 22rpx;
 }
 
 .profile-stats-value {
   margin-top: 8rpx;
   color: var(--yzm-gold);
   font-family: Georgia, serif;
-  font-size: 29rpx;
+  font-size: 32rpx;
   font-weight: 600;
 }
 
