@@ -7,7 +7,7 @@
       <input v-model="keyword" class="search-bar-input" placeholder="搜索茶名、香气或产地" />
     </view>
 
-    <scroll-view v-if="categories?.length" scroll-x class="category-scroll">
+    <scroll-view v-if="categories.length > 1" scroll-x class="category-scroll">
       <view class="category-list">
         <text
           v-for="category in categories"
@@ -58,7 +58,7 @@ import type { Product } from '@/types';
 
 const keyword = ref('');
 const activeCategory = ref('全部');
-const categories = ['全部', ...new Set(mockProducts.map((product) => product.category))];
+const categories = ['全部'];
 const { goTo } = useNavigation();
 
 /** @returns 同时匹配当前分类和搜索关键词的商品列表。 */
