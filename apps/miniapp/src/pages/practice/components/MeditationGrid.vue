@@ -4,10 +4,10 @@
     <view class="meditation-grid">
       <YzmCard v-for="item in meditations" :key="item.title" flat>
         <view class="meditation-card">
-          <text class="meditation-card__symbol">{{ item.symbol }}</text>
-          <text class="meditation-card__title">{{ item.title }}</text>
-          <text class="meditation-card__text">{{ item.text }}</text>
-          <text class="meditation-card__meta">{{ item.duration }} ›</text>
+          <text class="meditation-card-symbol">{{ item.symbol }}</text>
+          <text class="meditation-card-title">{{ item.title }}</text>
+          <text class="meditation-card-text">{{ item.text }}</text>
+          <text class="meditation-card-meta">{{ item.duration }} ›</text>
         </view>
       </YzmCard>
     </view>
@@ -50,32 +50,32 @@ const meditations = [
   padding: 28rpx 26rpx;
 }
 
-.meditation-card__symbol,
-.meditation-card__title,
-.meditation-card__text,
-.meditation-card__meta {
+.meditation-card-symbol,
+.meditation-card-title,
+.meditation-card-text,
+.meditation-card-meta {
   display: block;
 }
 
-.meditation-card__symbol {
+.meditation-card-symbol {
   color: var(--yzm-gold);
   font-size: 44rpx;
 }
 
-.meditation-card__title {
+.meditation-card-title {
   margin-top: 20rpx;
   font-size: 27rpx;
   font-weight: 650;
 }
 
-.meditation-card__text {
+.meditation-card-text {
   margin-top: 12rpx;
   color: var(--yzm-muted);
   font-size: 20rpx;
   line-height: 1.6;
 }
 
-.meditation-card__meta {
+.meditation-card-meta {
   margin-top: 22rpx;
   color: var(--yzm-jade);
   font-size: 19rpx;

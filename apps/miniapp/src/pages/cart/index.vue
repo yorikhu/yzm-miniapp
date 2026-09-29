@@ -13,25 +13,23 @@
     </view>
 
     <view class="checkout-bar">
-      <view class="checkout-bar__select" @click="toggleAll">
-        <view class="checkout-bar__check" :class="{ 'checkout-bar__check--active': allSelected }">
+      <view class="checkout-bar-select" @click="toggleAll">
+        <view class="checkout-bar-check" :class="{ 'checkout-bar-check-active': allSelected }">
           {{ allSelected ? '✓' : '' }}
         </view>
         <text>全选</text>
       </view>
-      <view class="checkout-bar__summary">
-        <view class="checkout-bar__amount">
+      <view class="checkout-bar-summary">
+        <view class="checkout-bar-amount">
           <text>合计</text><text class="price">¥ {{ total }}</text>
         </view>
-        <text
-          class="checkout-bar__tip"
-          :class="{ 'checkout-bar__tip--fulfilled': isFreeShipping }"
-          >{{ shippingTip }}</text
-        >
+        <text class="checkout-bar-tip" :class="{ 'checkout-bar-tip-fulfilled': isFreeShipping }">{{
+          shippingTip
+        }}</text>
       </view>
       <YzmButton :disabled="selectedCount === 0" @click="goCheckout">
         <text>结算</text>
-        <text v-if="selectedCount > 0" class="checkout-bar__selected-count">{{
+        <text v-if="selectedCount > 0" class="checkout-bar-selected-count">{{
           selectedCount
         }}</text>
       </YzmButton>
@@ -100,14 +98,14 @@ const goCheckout = () => selectedCount.value > 0 && goTo('/pages/checkout/index'
   gap: 16rpx;
 }
 
-.checkout-bar__select {
+.checkout-bar-select {
   display: flex;
   align-items: center;
   font-size: 21rpx;
   gap: 16rpx;
 }
 
-.checkout-bar__summary {
+.checkout-bar-summary {
   display: flex;
   flex: 1;
   min-width: 0;
@@ -116,7 +114,7 @@ const goCheckout = () => selectedCount.value > 0 && goTo('/pages/checkout/index'
   gap: 6rpx;
 }
 
-.checkout-bar__check {
+.checkout-bar-check {
   display: flex;
   flex: 0 0 38rpx;
   height: 38rpx;
@@ -129,12 +127,12 @@ const goCheckout = () => selectedCount.value > 0 && goTo('/pages/checkout/index'
   font-size: 23rpx;
 }
 
-.checkout-bar__check--active {
+.checkout-bar-check-active {
   border-color: var(--yzm-jade);
   background: var(--yzm-jade);
 }
 
-.checkout-bar__amount {
+.checkout-bar-amount {
   display: flex;
   align-items: baseline;
   justify-content: flex-end;
@@ -142,11 +140,11 @@ const goCheckout = () => selectedCount.value > 0 && goTo('/pages/checkout/index'
   gap: 8rpx;
 }
 
-.checkout-bar__amount .price {
+.checkout-bar-amount .price {
   font-size: 32rpx;
 }
 
-.checkout-bar__tip {
+.checkout-bar-tip {
   width: 100%;
   overflow: hidden;
   color: var(--yzm-gold);
@@ -156,7 +154,7 @@ const goCheckout = () => selectedCount.value > 0 && goTo('/pages/checkout/index'
   white-space: nowrap;
 }
 
-.checkout-bar__tip--fulfilled {
+.checkout-bar-tip-fulfilled {
   color: var(--yzm-jade);
 }
 
@@ -176,7 +174,7 @@ const goCheckout = () => selectedCount.value > 0 && goTo('/pages/checkout/index'
   opacity: 1;
 }
 
-.checkout-bar__selected-count {
+.checkout-bar-selected-count {
   min-width: 30rpx;
   height: 30rpx;
   margin-left: 10rpx;

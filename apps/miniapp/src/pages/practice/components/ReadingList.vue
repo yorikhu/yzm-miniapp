@@ -4,11 +4,11 @@
     <YzmCard>
       <view class="book-list">
         <view v-for="(book, index) in books" :key="book.title" class="book-item">
-          <view class="book-item__cover">{{ String(index + 1).padStart(2, '0') }}</view>
-          <view class="book-item__body">
-            <text class="book-item__title">《{{ book.title }}》</text>
-            <text class="book-item__author">{{ book.author }}</text>
-            <text class="book-item__reason">{{ book.reason }}</text>
+          <view class="book-item-cover">{{ String(index + 1).padStart(2, '0') }}</view>
+          <view class="book-item-body">
+            <text class="book-item-title">《{{ book.title }}》</text>
+            <text class="book-item-author">{{ book.author }}</text>
+            <text class="book-item-reason">{{ book.reason }}</text>
           </view>
         </view>
         <view class="reading-note">社区达到 100 人后开启陪伴阅读 · 当前 68/100</view>
@@ -47,7 +47,7 @@ const books = [
   gap: 20rpx;
 }
 
-.book-item__cover {
+.book-item-cover {
   display: flex;
   flex: 0 0 74rpx;
   height: 104rpx;
@@ -61,28 +61,28 @@ const books = [
   font-size: 18rpx;
 }
 
-.book-item__body {
+.book-item-body {
   flex: 1;
 }
 
-.book-item__title,
-.book-item__author,
-.book-item__reason {
+.book-item-title,
+.book-item-author,
+.book-item-reason {
   display: block;
 }
 
-.book-item__title {
+.book-item-title {
   font-size: 26rpx;
   font-weight: 650;
 }
 
-.book-item__author {
+.book-item-author {
   margin-top: 4rpx;
   color: var(--yzm-gold);
   font-size: 18rpx;
 }
 
-.book-item__reason {
+.book-item-reason {
   margin-top: 8rpx;
   color: var(--yzm-muted);
   font-size: 20rpx;

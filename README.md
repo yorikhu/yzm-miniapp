@@ -26,6 +26,18 @@ apps/miniapp/src/
 
 当前前端数据由依赖包 `chance` 生成，后续接入 NestJS API 时只需替换 `services/mock` 数据层。
 
+### CSS 命名规范
+
+前端 CSS 类名统一使用纯 `kebab-case`，元素和状态均使用单个短横线连接：
+
+```text
+product-card-visual
+product-card-price
+product-card-active
+```
+
+不使用 `block__element--modifier` 形式。CSS 自定义变量仍遵循标准的双短横线语法，例如 `--yzm-jade`。
+
 ## 环境要求
 
 - Node.js 20.18+

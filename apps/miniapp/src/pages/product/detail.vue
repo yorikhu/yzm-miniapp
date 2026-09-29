@@ -1,35 +1,35 @@
 <template>
-  <view class="page-shell page-shell--no-tab">
+  <view class="page-shell page-shell-no-tab">
     <AppHeader title="茶品详情" back centered />
 
     <view class="product-hero">
       <ProductArtwork :tone="product.tone" :name="product.name" />
-      <view class="product-hero__badge">{{ product.origin }}</view>
+      <view class="product-hero-badge">{{ product.origin }}</view>
     </view>
 
     <view class="product-main">
-      <text class="product-main__category">{{ product.category }} · {{ product.latitude }}</text>
-      <text class="product-main__title">{{ product.name }}</text>
-      <text class="product-main__subtitle">{{ product.subtitle }}</text>
-      <view class="product-main__meta">
-        <text class="product-main__price price">¥{{ selectedSku?.price ?? product.price }}</text>
-        <text v-if="product.originalPrice" class="product-main__original"
+      <text class="product-main-category">{{ product.category }} · {{ product.latitude }}</text>
+      <text class="product-main-title">{{ product.name }}</text>
+      <text class="product-main-subtitle">{{ product.subtitle }}</text>
+      <view class="product-main-meta">
+        <text class="product-main-price price">¥{{ selectedSku?.price ?? product.price }}</text>
+        <text v-if="product.originalPrice" class="product-main-original"
           >¥{{ product.originalPrice }}</text
         >
-        <text class="product-main__sales">已售 {{ product.sales }}</text>
+        <text class="product-main-sales">已售 {{ product.sales }}</text>
       </view>
     </view>
 
     <YzmCard class="purchase-card">
-      <view class="purchase-card__section">
-        <text class="purchase-card__label">选择规格</text>
+      <view class="purchase-card-section">
+        <text class="purchase-card-label">选择规格</text>
         <ProductSkuPicker v-model="selectedSkuId" :skus="product.skus" />
       </view>
-      <view class="purchase-card__quantity">
-        <text class="purchase-card__label">购买数量</text>
+      <view class="purchase-card-quantity">
+        <text class="purchase-card-label">购买数量</text>
         <QuantityStepper v-model="quantity" />
       </view>
-      <view class="purchase-card__actions">
+      <view class="purchase-card-actions">
         <YzmButton variant="outline" block @click="add">加入购物车</YzmButton>
         <YzmButton block @click="buyNow">立即购买</YzmButton>
       </view>
@@ -39,10 +39,10 @@
       <SectionHeading eyebrow="PRODUCT STORY" title="这一盏的故事" />
       <YzmCard>
         <view class="story">
-          <text class="story__lead">{{ product.coreBenefit }}</text>
-          <text class="story__body">{{ product.detail }}</text>
-          <view class="story__divider" />
-          <view class="story__notes">
+          <text class="story-lead">{{ product.coreBenefit }}</text>
+          <text class="story-body">{{ product.detail }}</text>
+          <view class="story-divider" />
+          <view class="story-notes">
             <view><text>香气</text><text>花蜜香 · 山野气</text></view>
             <view><text>茶汤</text><text>温润 · 清甜 · 耐泡</text></view>
             <view><text>建议</text><text>90°C 水温 · 8 秒出汤</text></view>
@@ -123,7 +123,7 @@ const buyNow = () => {
   border-radius: 32rpx;
 }
 
-.product-hero :deep(.artwork__jar) {
+.product-hero :deep(.artwork-jar) {
   bottom: 80rpx;
   left: 90rpx;
   width: 190rpx;
@@ -131,11 +131,11 @@ const buyNow = () => {
   border-radius: 30rpx 30rpx 46rpx 46rpx;
 }
 
-.product-hero :deep(.artwork__seal) {
+.product-hero :deep(.artwork-seal) {
   font-size: 74rpx;
 }
 
-.product-hero__badge {
+.product-hero-badge {
   position: absolute;
   right: 24rpx;
   bottom: 22rpx;
@@ -150,77 +150,77 @@ const buyNow = () => {
   padding: 32rpx 6rpx;
 }
 
-.product-main__category,
-.product-main__title,
-.product-main__subtitle {
+.product-main-category,
+.product-main-title,
+.product-main-subtitle {
   display: block;
 }
 
-.product-main__category {
+.product-main-category {
   color: var(--yzm-gold);
   font-size: 20rpx;
   letter-spacing: 2rpx;
 }
 
-.product-main__title {
+.product-main-title {
   margin-top: 10rpx;
   font-size: 46rpx;
   font-weight: 650;
 }
 
-.product-main__subtitle {
+.product-main-subtitle {
   margin-top: 8rpx;
   color: var(--yzm-ink-soft);
   font-size: 25rpx;
 }
 
-.product-main__meta {
+.product-main-meta {
   display: flex;
   margin-top: 24rpx;
   align-items: baseline;
   gap: 14rpx;
 }
 
-.product-main__price {
+.product-main-price {
   font-size: 44rpx;
 }
 
-.product-main__original {
+.product-main-original {
   color: #a7aaa7;
   font-size: 22rpx;
   text-decoration: line-through;
 }
 
-.product-main__sales {
+.product-main-sales {
   margin-left: auto;
   color: var(--yzm-muted);
   font-size: 20rpx;
 }
 
-.purchase-card__section,
-.purchase-card__quantity {
+.purchase-card-section,
+.purchase-card-quantity {
   padding: 28rpx;
 }
 
-.purchase-card__quantity {
+.purchase-card-quantity {
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-top: 1rpx solid var(--yzm-line);
 }
 
-.purchase-card__label {
+.purchase-card-label {
   display: block;
   margin-bottom: 18rpx;
   font-size: 25rpx;
   font-weight: 650;
 }
 
-.purchase-card__quantity .purchase-card__label {
+.purchase-card-quantity .purchase-card-label {
   margin-bottom: 0;
 }
 
-.purchase-card__actions {
+.purchase-card-actions {
   display: grid;
   padding: 0 28rpx 28rpx;
   grid-template-columns: 1fr 1fr;
@@ -231,31 +231,31 @@ const buyNow = () => {
   padding: 32rpx;
 }
 
-.story__lead,
-.story__body {
+.story-lead,
+.story-body {
   display: block;
 }
 
-.story__lead {
+.story-lead {
   color: var(--yzm-gold);
   font-size: 24rpx;
   letter-spacing: 1rpx;
 }
 
-.story__body {
+.story-body {
   margin-top: 18rpx;
   color: var(--yzm-ink-soft);
   font-size: 24rpx;
   line-height: 1.9;
 }
 
-.story__divider {
+.story-divider {
   height: 1rpx;
   margin: 26rpx 0;
   background: var(--yzm-line);
 }
 
-.story__notes view {
+.story-notes view {
   display: grid;
   padding: 12rpx 0;
   grid-template-columns: 90rpx 1fr;
@@ -263,7 +263,7 @@ const buyNow = () => {
   font-size: 22rpx;
 }
 
-.story__notes view text:first-child {
+.story-notes view text:first-child {
   color: var(--yzm-ink);
   font-weight: 600;
 }

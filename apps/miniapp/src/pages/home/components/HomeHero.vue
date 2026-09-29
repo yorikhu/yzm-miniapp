@@ -1,19 +1,19 @@
 <template>
   <view class="hero paper-texture">
-    <view class="hero__copy">
-      <text class="hero__eyebrow">身心有栖 · 茶中见己</text>
-      <text class="hero__title">一盏茶，安顿身心</text>
-      <text class="hero__description">从景迈山的一片叶子出发，练习温柔而坚定地面对生活。</text>
-      <view class="hero__actions">
+    <view class="hero-copy">
+      <text class="hero-eyebrow">身心有栖 · 茶中见己</text>
+      <text class="hero-title">一盏茶，安顿身心</text>
+      <text class="hero-description">从景迈山的一片叶子出发，练习温柔而坚定地面对生活。</text>
+      <view class="hero-actions">
         <YzmButton @click="$emit('shop')">选一盏茶</YzmButton>
         <YzmButton variant="outline" @click="$emit('practice')">开始静心</YzmButton>
       </view>
     </view>
-    <view class="hero__tea">
-      <view class="hero__steam hero__steam--one" />
-      <view class="hero__steam hero__steam--two" />
-      <view class="hero__cup"><view class="hero__tea-surface" /></view>
-      <view class="hero__saucer" />
+    <view class="hero-tea">
+      <view class="hero-steam hero-steam-one" />
+      <view class="hero-steam hero-steam-two" />
+      <view class="hero-cup"><view class="hero-tea-surface" /></view>
+      <view class="hero-saucer" />
     </view>
   </view>
 </template>
@@ -37,25 +37,25 @@ defineEmits<{ shop: []; practice: [] }>();
   background-color: var(--yzm-paper-light);
 }
 
-.hero__copy {
+.hero-copy {
   position: relative;
   z-index: 2;
   max-width: 520rpx;
 }
 
-.hero__eyebrow,
-.hero__title,
-.hero__description {
+.hero-eyebrow,
+.hero-title,
+.hero-description {
   display: block;
 }
 
-.hero__eyebrow {
+.hero-eyebrow {
   color: var(--yzm-gold);
   font-size: 20rpx;
   letter-spacing: 5rpx;
 }
 
-.hero__title {
+.hero-title {
   margin-top: 20rpx;
   font-family: 'Songti SC', 'STSong', serif;
   font-size: 56rpx;
@@ -64,7 +64,7 @@ defineEmits<{ shop: []; practice: [] }>();
   letter-spacing: 5rpx;
 }
 
-.hero__description {
+.hero-description {
   max-width: 450rpx;
   margin-top: 22rpx;
   color: var(--yzm-muted);
@@ -72,19 +72,19 @@ defineEmits<{ shop: []; practice: [] }>();
   line-height: 1.9;
 }
 
-.hero__actions {
+.hero-actions {
   display: flex;
   margin-top: 38rpx;
   gap: 14rpx;
 }
 
-.hero__actions :deep(.yzm-button) {
+.hero-actions :deep(.yzm-button) {
   min-height: 76rpx;
   padding: 0 28rpx;
   font-size: 24rpx;
 }
 
-.hero__tea {
+.hero-tea {
   position: absolute;
   right: -18rpx;
   bottom: 8rpx;
@@ -93,7 +93,7 @@ defineEmits<{ shop: []; practice: [] }>();
   opacity: 0.66;
 }
 
-.hero__cup {
+.hero-cup {
   position: absolute;
   right: 50rpx;
   bottom: 34rpx;
@@ -103,7 +103,7 @@ defineEmits<{ shop: []; practice: [] }>();
   background: linear-gradient(180deg, #f6f0df, #d8dfcf);
 }
 
-.hero__tea-surface {
+.hero-tea-surface {
   width: 150rpx;
   height: 24rpx;
   margin: 8rpx auto;
@@ -111,7 +111,7 @@ defineEmits<{ shop: []; practice: [] }>();
   background: #a56a2f;
 }
 
-.hero__saucer {
+.hero-saucer {
   position: absolute;
   right: 20rpx;
   bottom: 16rpx;
@@ -121,7 +121,7 @@ defineEmits<{ shop: []; practice: [] }>();
   background: rgba(71, 100, 83, 0.2);
 }
 
-.hero__steam {
+.hero-steam {
   position: absolute;
   bottom: 138rpx;
   width: 28rpx;
@@ -131,11 +131,11 @@ defineEmits<{ shop: []; practice: [] }>();
   transform: rotate(16deg);
 }
 
-.hero__steam--one {
+.hero-steam-one {
   right: 120rpx;
 }
 
-.hero__steam--two {
+.hero-steam-two {
   right: 165rpx;
   height: 76rpx;
   transform: rotate(-12deg);

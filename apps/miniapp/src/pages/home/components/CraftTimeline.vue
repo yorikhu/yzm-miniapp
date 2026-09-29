@@ -3,11 +3,11 @@
     <SectionHeading eyebrow="CRAFT" title="功夫红茶的四道工序" />
     <view class="craft-list">
       <view v-for="(step, index) in steps" :key="step.title" class="craft-item">
-        <view class="craft-item__number">0{{ index + 1 }}</view>
-        <view class="craft-item__line" />
-        <view class="craft-item__body">
-          <text class="craft-item__title">{{ step.title }}</text>
-          <text class="craft-item__text">{{ step.text }}</text>
+        <view class="craft-item-number">0{{ index + 1 }}</view>
+        <view class="craft-item-line" />
+        <view class="craft-item-body">
+          <text class="craft-item-title">{{ step.title }}</text>
+          <text class="craft-item-text">{{ step.text }}</text>
         </view>
       </view>
     </view>
@@ -40,20 +40,20 @@ const steps = [
   gap: 12rpx;
 }
 
-.craft-item__number {
+.craft-item-number {
   color: var(--yzm-gold);
   font-family: Georgia, serif;
   font-size: 23rpx;
 }
 
-.craft-item__line {
+.craft-item-line {
   position: relative;
   width: 2rpx;
   height: 100%;
   background: var(--yzm-line);
 }
 
-.craft-item__line::before {
+.craft-item-line::before {
   position: absolute;
   top: 0;
   left: -6rpx;
@@ -64,17 +64,17 @@ const steps = [
   content: '';
 }
 
-.craft-item__title,
-.craft-item__text {
+.craft-item-title,
+.craft-item-text {
   display: block;
 }
 
-.craft-item__title {
+.craft-item-title {
   font-size: 28rpx;
   font-weight: 650;
 }
 
-.craft-item__text {
+.craft-item-text {
   margin-top: 8rpx;
   color: var(--yzm-muted);
   font-size: 21rpx;

@@ -1,15 +1,15 @@
 <template>
-  <view class="page-shell page-shell--no-tab checkout-page">
+  <view class="page-shell page-shell-no-tab checkout-page">
     <AppHeader title="确认订单" back centered />
 
-    <YzmCard>
+    <YzmCard class="address-panel">
       <view class="address-card">
-        <view class="address-card__pin">⌖</view>
-        <view class="address-card__body">
-          <text class="address-card__name">茗主　138****6688</text>
-          <text class="address-card__text">云南省普洱市 · 澜沧县惠民镇景迈村 8 号</text>
+        <view class="address-card-pin">⌖</view>
+        <view class="address-card-body">
+          <text class="address-card-name">茗主　138****6688</text>
+          <text class="address-card-text">云南省普洱市 · 澜沧县惠民镇景迈村 8 号</text>
         </view>
-        <text class="address-card__arrow">›</text>
+        <text class="address-card-arrow">›</text>
       </view>
     </YzmCard>
 
@@ -17,19 +17,19 @@
       <SectionHeading title="商品清单" />
       <YzmCard>
         <view v-for="item in selectedItems" :key="item.id" class="order-item">
-          <view class="order-item__art"
+          <view class="order-item-art"
             ><ProductArtwork :tone="item.product.tone" :name="item.product.name"
           /></view>
-          <view class="order-item__body">
-            <text class="order-item__name">{{ item.product.name }}</text>
-            <text class="order-item__sku"
+          <view class="order-item-body">
+            <text class="order-item-name">{{ item.product.name }}</text>
+            <text class="order-item-sku"
               >{{ findSku(item)?.name }} · {{ findSku(item)?.spec }}</text
             >
           </view>
-          <view class="order-item__price">
+          <view class="order-item-price">
             <text>×{{ item.quantity }}</text>
             <text class="price"
-              >¥{{ (findSku(item)?.price ?? item.product.price) * item.quantity }}</text
+              >¥ {{ (findSku(item)?.price ?? item.product.price) * item.quantity }}</text
             >
           </view>
         </view>
@@ -47,18 +47,19 @@
 
     <YzmCard class="amount-card">
       <view
-        ><text>商品总额</text><text>¥{{ total }}</text></view
+        ><text>商品总额</text><text>¥ {{ total }}</text></view
       >
-      <view><text>运费</text><text>¥0</text></view>
-      <view class="amount-card__total"
-        ><text>实付</text><text class="price">¥{{ total }}</text></view
+      <view><text>运费</text><text>¥ 0</text></view>
+      <view class="amount-card-total"
+        ><text>实付</text><text class="price">¥ {{ total }}</text></view
       >
     </YzmCard>
 
     <view class="pay-bar">
-      <view
-        ><text>实付</text><text class="price">¥{{ total }}</text></view
-      >
+      <view class="pay-bar-amount">
+        <text>实付</text>
+        <text class="price">¥ {{ total }}</text>
+      </view>
       <YzmButton @click="pay">立即支付</YzmButton>
     </view>
   </view>
@@ -98,7 +99,11 @@ const pay = () => goTo(`/pages/payment/success?amount=${total.value}`);
 
 <style scoped>
 .checkout-page {
-  padding-bottom: calc(150rpx + env(safe-area-inset-bottom));
+  padding-bottom: calc(190rpx + env(safe-area-inset-bottom));
+}
+
+.address-panel {
+  margin-top: 4rpx;
 }
 
 .address-card {
@@ -108,7 +113,7 @@ const pay = () => goTo(`/pages/payment/success?amount=${total.value}`);
   gap: 18rpx;
 }
 
-.address-card__pin {
+.address-card-pin {
   display: flex;
   width: 58rpx;
   height: 58rpx;
@@ -116,37 +121,39 @@ const pay = () => goTo(`/pages/payment/success?amount=${total.value}`);
   justify-content: center;
   border: 2rpx solid var(--yzm-jade);
   border-radius: 50%;
+  color: var(--yzm-jade);
   font-size: 29rpx;
 }
 
-.address-card__body {
+.address-card-body {
   flex: 1;
+  min-width: 0;
 }
 
-.address-card__name,
-.address-card__text {
+.address-card-name,
+.address-card-text {
   display: block;
 }
 
-.address-card__name {
+.address-card-name {
   font-size: 26rpx;
   font-weight: 650;
 }
 
-.address-card__text {
+.address-card-text {
   margin-top: 8rpx;
   color: var(--yzm-muted);
   font-size: 21rpx;
   line-height: 1.5;
 }
 
-.address-card__arrow {
+.address-card-arrow {
   color: var(--yzm-muted);
   font-size: 40rpx;
 }
 
 .checkout-section {
-  margin-top: 34rpx;
+  margin-top: 38rpx;
 }
 
 .order-item {
@@ -161,60 +168,66 @@ const pay = () => goTo(`/pages/payment/success?amount=${total.value}`);
   border-bottom: 0;
 }
 
-.order-item__art {
-  width: 126rpx;
+.order-item-art {
+  flex: 0 0 126rpx;
   height: 132rpx;
 }
 
-.order-item__art :deep(.artwork) {
+.order-item-art :deep(.artwork) {
   min-height: 132rpx;
 }
 
-.order-item__art :deep(.artwork__jar) {
+.order-item-art :deep(.artwork-jar) {
   bottom: 12rpx;
   left: 12rpx;
   width: 48rpx;
   height: 68rpx;
 }
 
-.order-item__body {
+.order-item-body {
   flex: 1;
+  min-width: 0;
 }
 
-.order-item__name,
-.order-item__sku,
-.order-item__price text {
+.order-item-name,
+.order-item-sku,
+.order-item-price text {
   display: block;
 }
 
-.order-item__name {
+.order-item-name {
+  overflow: hidden;
   font-size: 27rpx;
   font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.order-item__sku {
+.order-item-sku {
   margin-top: 8rpx;
   color: var(--yzm-muted);
   font-size: 20rpx;
 }
 
-.order-item__price {
+.order-item-price {
+  flex-shrink: 0;
+  min-width: 96rpx;
   text-align: right;
 }
 
-.order-item__price text:first-child {
+.order-item-price text:first-child {
   color: var(--yzm-muted);
   font-size: 19rpx;
 }
 
-.order-item__price .price {
+.order-item-price .price {
   margin-top: 12rpx;
   font-size: 25rpx;
 }
 
 .option-card,
 .amount-card {
-  margin-top: 20rpx;
+  margin-top: 28rpx;
 }
 
 .option-row {
@@ -225,6 +238,7 @@ const pay = () => goTo(`/pages/payment/success?amount=${total.value}`);
   justify-content: space-between;
   border-bottom: 1rpx solid var(--yzm-line);
   font-size: 23rpx;
+  gap: 24rpx;
 }
 
 .option-row:last-child {
@@ -233,8 +247,13 @@ const pay = () => goTo(`/pages/payment/success?amount=${total.value}`);
 
 .option-row input {
   flex: 1;
-  margin-left: 40rpx;
+  min-width: 0;
   font-size: 22rpx;
+  text-align: right;
+}
+
+.option-row .muted {
+  min-width: 0;
   text-align: right;
 }
 
@@ -250,7 +269,7 @@ const pay = () => goTo(`/pages/payment/success?amount=${total.value}`);
   font-size: 22rpx;
 }
 
-.amount-card .amount-card__total {
+.amount-card .amount-card-total {
   margin-top: 6rpx;
   padding-top: 20rpx;
   border-top: 1rpx solid var(--yzm-line);
@@ -259,29 +278,34 @@ const pay = () => goTo(`/pages/payment/success?amount=${total.value}`);
   font-weight: 650;
 }
 
-.amount-card__total .price {
+.amount-card-total .price {
   font-size: 34rpx;
 }
 
 .pay-bar {
   position: fixed;
-  z-index: 10;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  z-index: 21;
+  right: 20rpx;
+  bottom: calc(20rpx + env(safe-area-inset-bottom));
+  left: 20rpx;
   display: flex;
-  min-height: calc(118rpx + env(safe-area-inset-bottom));
-  padding: 14rpx 28rpx env(safe-area-inset-bottom);
+  max-width: 940rpx;
+  min-height: 112rpx;
+  margin: 0 auto;
+  padding: 14rpx 16rpx 14rpx 26rpx;
   align-items: center;
-  justify-content: flex-end;
+  border: 1rpx solid var(--yzm-line);
+  border-radius: 28rpx;
   background: rgba(255, 253, 248, 0.98);
-  box-shadow: 0 -10rpx 35rpx rgba(55, 45, 28, 0.08);
-  gap: 28rpx;
+  box-shadow: 0 12rpx 40rpx rgba(55, 45, 28, 0.14);
+  gap: 20rpx;
 }
 
-.pay-bar > view {
+.pay-bar-amount {
   display: flex;
+  flex: 1;
   align-items: baseline;
+  justify-content: flex-end;
   gap: 8rpx;
 }
 
@@ -290,7 +314,9 @@ const pay = () => goTo(`/pages/payment/success?amount=${total.value}`);
 }
 
 .pay-bar :deep(.yzm-button) {
+  flex-shrink: 0;
+  min-width: 210rpx;
   min-height: 80rpx;
-  padding: 0 50rpx;
+  padding: 0 36rpx;
 }
 </style>

@@ -3,12 +3,12 @@
     <view
       v-for="sku in skus"
       :key="sku.id"
-      class="sku-picker__item"
-      :class="{ 'sku-picker__item--active': modelValue === sku.id }"
+      class="sku-picker-item"
+      :class="{ 'sku-picker-item-active': modelValue === sku.id }"
       @click="$emit('update:modelValue', sku.id)"
     >
-      <text class="sku-picker__name">{{ sku.name }}</text>
-      <text class="sku-picker__meta">{{ sku.spec }} · ¥{{ sku.price }}</text>
+      <text class="sku-picker-name">{{ sku.name }}</text>
+      <text class="sku-picker-meta">{{ sku.spec }} · ¥{{ sku.price }}</text>
     </view>
   </view>
 </template>
@@ -30,7 +30,7 @@ defineEmits<{ 'update:modelValue': [value: string] }>();
   gap: 14rpx;
 }
 
-.sku-picker__item {
+.sku-picker-item {
   min-width: 210rpx;
   padding: 18rpx 22rpx;
   border: 1rpx solid var(--yzm-line);
@@ -38,22 +38,22 @@ defineEmits<{ 'update:modelValue': [value: string] }>();
   background: rgba(255, 255, 255, 0.35);
 }
 
-.sku-picker__item--active {
+.sku-picker-item-active {
   border-color: var(--yzm-jade);
   background: rgba(23, 107, 89, 0.09);
   box-shadow: inset 0 0 0 1rpx var(--yzm-jade);
 }
 
-.sku-picker__name,
-.sku-picker__meta {
+.sku-picker-name,
+.sku-picker-meta {
   display: block;
 }
 
-.sku-picker__name {
+.sku-picker-name {
   font-weight: 600;
 }
 
-.sku-picker__meta {
+.sku-picker-meta {
   margin-top: 4rpx;
   color: var(--yzm-muted);
   font-size: 21rpx;

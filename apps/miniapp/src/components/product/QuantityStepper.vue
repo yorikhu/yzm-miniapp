@@ -1,10 +1,10 @@
 <template>
   <view class="stepper">
-    <text class="stepper__button" @click="$emit('update:modelValue', Math.max(1, modelValue - 1))"
+    <text class="stepper-button" @click="$emit('update:modelValue', Math.max(1, modelValue - 1))"
       >−</text
     >
-    <text class="stepper__value">{{ modelValue }}</text>
-    <text class="stepper__button" @click="$emit('update:modelValue', modelValue + 1)">＋</text>
+    <text class="stepper-value">{{ modelValue }}</text>
+    <text class="stepper-button" @click="$emit('update:modelValue', modelValue + 1)">＋</text>
   </view>
 </template>
 
@@ -27,20 +27,20 @@ defineEmits<{ 'update:modelValue': [value: number] }>();
   background: rgba(255, 255, 255, 0.4);
 }
 
-.stepper__button,
-.stepper__value {
+.stepper-button,
+.stepper-value {
   min-width: 58rpx;
   line-height: 58rpx;
   text-align: center;
 }
 
-.stepper__button {
+.stepper-button {
   color: var(--yzm-ink-soft);
   font-family: Arial, sans-serif;
   font-size: 28rpx;
 }
 
-.stepper__value {
+.stepper-value {
   min-width: 48rpx;
   font-size: 25rpx;
 }

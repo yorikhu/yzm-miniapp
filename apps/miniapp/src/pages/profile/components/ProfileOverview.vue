@@ -2,31 +2,31 @@
   <view>
     <YzmCard>
       <view class="profile-card">
-        <image class="profile-card__avatar" src="/static/logo.png" mode="aspectFill" />
-        <view class="profile-card__body">
-          <text class="profile-card__name">{{ profile.name }}</text>
-          <text class="profile-card__level">会员等级 · {{ profile.level }}</text>
+        <image class="profile-card-avatar" src="/static/logo.png" mode="aspectFill" />
+        <view class="profile-card-body">
+          <text class="profile-card-name">{{ profile.name }}</text>
+          <text class="profile-card-level">会员等级 · {{ profile.level }}</text>
         </view>
-        <text class="profile-card__arrow">›</text>
+        <text class="profile-card-arrow">›</text>
       </view>
     </YzmCard>
 
     <view class="profile-stats-card">
       <YzmCard flat>
         <view class="profile-stats">
-          <view class="profile-stats__item">
-            <text class="profile-stats__label">可用积分</text>
-            <text class="profile-stats__value">{{ profile.points }}</text>
+          <view class="profile-stats-item">
+            <text class="profile-stats-label">可用积分</text>
+            <text class="profile-stats-value">{{ profile.points }}</text>
           </view>
-          <view class="profile-stats__divider" />
-          <view class="profile-stats__item">
-            <text class="profile-stats__label">优惠券</text>
-            <text class="profile-stats__value">{{ profile.coupons }} 张</text>
+          <view class="profile-stats-divider" />
+          <view class="profile-stats-item">
+            <text class="profile-stats-label">优惠券</text>
+            <text class="profile-stats-value">{{ profile.coupons }} 张</text>
           </view>
-          <view class="profile-stats__divider" />
-          <view class="profile-stats__item">
-            <text class="profile-stats__label">静心日</text>
-            <text class="profile-stats__value">21 天</text>
+          <view class="profile-stats-divider" />
+          <view class="profile-stats-item">
+            <text class="profile-stats-label">静心日</text>
+            <text class="profile-stats-value">21 天</text>
           </view>
         </view>
       </YzmCard>
@@ -52,35 +52,35 @@ defineProps<{ profile: UserProfile }>();
   gap: 22rpx;
 }
 
-.profile-card__avatar {
+.profile-card-avatar {
   width: 104rpx;
   height: 104rpx;
   border: 1rpx solid var(--yzm-line);
   border-radius: 50%;
 }
 
-.profile-card__body {
+.profile-card-body {
   flex: 1;
 }
 
-.profile-card__name,
-.profile-card__level {
+.profile-card-name,
+.profile-card-level {
   display: block;
 }
 
-.profile-card__name {
+.profile-card-name {
   font-family: 'Songti SC', 'STSong', serif;
   font-size: 32rpx;
   font-weight: 600;
 }
 
-.profile-card__level {
+.profile-card-level {
   margin-top: 8rpx;
   color: var(--yzm-muted);
   font-size: 21rpx;
 }
 
-.profile-card__arrow {
+.profile-card-arrow {
   color: var(--yzm-muted);
   font-size: 38rpx;
 }
@@ -95,7 +95,7 @@ defineProps<{ profile: UserProfile }>();
   align-items: center;
 }
 
-.profile-stats__item {
+.profile-stats-item {
   display: flex;
   flex: 1 1 0;
   min-width: 0;
@@ -103,19 +103,19 @@ defineProps<{ profile: UserProfile }>();
   flex-direction: column;
 }
 
-.profile-stats__label,
-.profile-stats__value {
+.profile-stats-label,
+.profile-stats-value {
   display: block;
   max-width: 100%;
   white-space: nowrap;
 }
 
-.profile-stats__label {
+.profile-stats-label {
   color: var(--yzm-muted);
   font-size: 18rpx;
 }
 
-.profile-stats__value {
+.profile-stats-value {
   margin-top: 8rpx;
   color: var(--yzm-gold);
   font-family: Georgia, serif;
@@ -123,7 +123,7 @@ defineProps<{ profile: UserProfile }>();
   font-weight: 600;
 }
 
-.profile-stats__divider {
+.profile-stats-divider {
   width: 1rpx;
   height: 48rpx;
   background: var(--yzm-line);

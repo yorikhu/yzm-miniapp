@@ -5,15 +5,15 @@
     <view class="journal-list">
       <YzmCard v-for="entry in entries" :key="entry.id" flat>
         <view class="journal-card">
-          <view class="journal-card__head">
-            <view class="journal-card__avatar">{{ entry.author.slice(0, 1) }}</view>
+          <view class="journal-card-head">
+            <view class="journal-card-avatar">{{ entry.author.slice(0, 1) }}</view>
             <view
               ><text>{{ entry.author }}</text
               ><text>{{ entry.time }}</text></view
             >
           </view>
-          <text class="journal-card__content">{{ entry.content }}</text>
-          <text class="journal-card__like">♡ {{ entry.likes }}</text>
+          <text class="journal-card-content">{{ entry.content }}</text>
+          <text class="journal-card-like">♡ {{ entry.likes }}</text>
         </view>
       </YzmCard>
     </view>
@@ -59,13 +59,13 @@ const publishEntry = (content: string) => {
   padding: 25rpx;
 }
 
-.journal-card__head {
+.journal-card-head {
   display: flex;
   align-items: center;
   gap: 14rpx;
 }
 
-.journal-card__avatar {
+.journal-card-avatar {
   display: flex;
   width: 60rpx;
   height: 60rpx;
@@ -77,18 +77,18 @@ const publishEntry = (content: string) => {
   font-size: 21rpx;
 }
 
-.journal-card__head text {
+.journal-card-head text {
   display: block;
   font-size: 22rpx;
 }
 
-.journal-card__head text:last-child {
+.journal-card-head text:last-child {
   margin-top: 4rpx;
   color: var(--yzm-muted);
   font-size: 17rpx;
 }
 
-.journal-card__content {
+.journal-card-content {
   display: block;
   margin-top: 20rpx;
   color: var(--yzm-ink-soft);
@@ -96,7 +96,7 @@ const publishEntry = (content: string) => {
   line-height: 1.8;
 }
 
-.journal-card__like {
+.journal-card-like {
   display: block;
   margin-top: 18rpx;
   color: var(--yzm-gold);

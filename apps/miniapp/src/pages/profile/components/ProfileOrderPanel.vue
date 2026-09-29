@@ -1,9 +1,9 @@
 <template>
   <YzmCard>
-    <view class="order-panel__title"><text>我的订单</text><text>全部订单 ›</text></view>
-    <view class="order-panel__states">
+    <view class="order-panel-title"><text>我的订单</text><text>全部订单 ›</text></view>
+    <view class="order-panel-states">
       <view v-for="item in orderStates" :key="item.label">
-        <view class="order-panel__icon"
+        <view class="order-panel-icon"
           >{{ item.icon }}<text v-if="item.count">{{ item.count }}</text></view
         >
         <text>{{ item.label }}</text>
@@ -27,7 +27,7 @@ const orderStates = [
 </script>
 
 <style scoped>
-.order-panel__title {
+.order-panel-title {
   display: flex;
   padding: 24rpx 26rpx;
   justify-content: space-between;
@@ -36,18 +36,18 @@ const orderStates = [
   font-weight: 600;
 }
 
-.order-panel__title text:last-child {
+.order-panel-title text:last-child {
   color: var(--yzm-muted);
   font-size: 20rpx;
   font-weight: 400;
 }
 
-.order-panel__states {
+.order-panel-states {
   display: flex;
   padding: 28rpx 12rpx;
 }
 
-.order-panel__states > view {
+.order-panel-states > view {
   display: flex;
   flex: 1;
   align-items: center;
@@ -56,7 +56,7 @@ const orderStates = [
   font-size: 20rpx;
 }
 
-.order-panel__icon {
+.order-panel-icon {
   position: relative;
   display: flex;
   width: 60rpx;
@@ -70,7 +70,7 @@ const orderStates = [
   font-size: 21rpx;
 }
 
-.order-panel__icon text {
+.order-panel-icon text {
   position: absolute;
   top: -8rpx;
   right: -8rpx;

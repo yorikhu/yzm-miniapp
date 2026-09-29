@@ -1,12 +1,12 @@
 <template>
-  <view class="artwork" :class="`artwork--${tone}`">
-    <view class="artwork__sun" />
-    <view class="artwork__leaf artwork__leaf--one" />
-    <view class="artwork__leaf artwork__leaf--two" />
-    <view class="artwork__jar">
-      <text class="artwork__seal">{{ name.slice(0, 1) }}</text>
+  <view class="artwork" :class="`artwork-${tone}`">
+    <view class="artwork-sun" />
+    <view class="artwork-leaf artwork-leaf-one" />
+    <view class="artwork-leaf artwork-leaf-two" />
+    <view class="artwork-jar">
+      <text class="artwork-seal">{{ name.slice(0, 1) }}</text>
     </view>
-    <text class="artwork__caption">YZM · TEA</text>
+    <text class="artwork-caption">YZM · TEA</text>
   </view>
 </template>
 
@@ -30,23 +30,23 @@ defineProps<{ tone: ArtworkTone; name: string }>();
   background: linear-gradient(145deg, #ede0c4, #c78f49);
 }
 
-.artwork--jade {
+.artwork-jade {
   background: linear-gradient(145deg, #dbe9d4, #7d9d78);
 }
 
-.artwork--mist {
+.artwork-mist {
   background: linear-gradient(145deg, #f0eee6, #b8c1b5);
 }
 
-.artwork--earth {
+.artwork-earth {
   background: linear-gradient(145deg, #d6c6ad, #755840);
 }
 
-.artwork--rose {
+.artwork-rose {
   background: linear-gradient(145deg, #f0d9d0, #b97870);
 }
 
-.artwork__sun {
+.artwork-sun {
   position: absolute;
   top: 18rpx;
   right: 18rpx;
@@ -56,7 +56,7 @@ defineProps<{ tone: ArtworkTone; name: string }>();
   background: rgba(255, 248, 220, 0.52);
 }
 
-.artwork__leaf {
+.artwork-leaf {
   position: absolute;
   width: 110rpx;
   height: 52rpx;
@@ -65,18 +65,18 @@ defineProps<{ tone: ArtworkTone; name: string }>();
   transform: rotate(-26deg);
 }
 
-.artwork__leaf--one {
+.artwork-leaf-one {
   right: -20rpx;
   bottom: 32rpx;
 }
 
-.artwork__leaf--two {
+.artwork-leaf-two {
   right: 34rpx;
   bottom: -8rpx;
   transform: rotate(18deg) scale(0.75);
 }
 
-.artwork__jar {
+.artwork-jar {
   position: absolute;
   bottom: 28rpx;
   left: 24rpx;
@@ -91,13 +91,13 @@ defineProps<{ tone: ArtworkTone; name: string }>();
   box-shadow: 0 10rpx 22rpx rgba(48, 39, 25, 0.12);
 }
 
-.artwork__seal {
+.artwork-seal {
   color: var(--yzm-ink);
   font-size: 42rpx;
   font-weight: 650;
 }
 
-.artwork__caption {
+.artwork-caption {
   position: absolute;
   top: 22rpx;
   left: 22rpx;

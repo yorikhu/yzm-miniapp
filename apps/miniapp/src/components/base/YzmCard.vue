@@ -1,5 +1,5 @@
 <template>
-  <view class="yzm-card" :class="{ 'yzm-card--flat': flat }">
+  <view class="yzm-card" :class="{ 'yzm-card-flat': flat }">
     <slot />
   </view>
 </template>
@@ -20,7 +20,7 @@ withDefaults(defineProps<{ flat?: boolean }>(), { flat: false });
   box-shadow: var(--yzm-shadow);
 }
 
-.yzm-card--flat {
+.yzm-card-flat {
   box-shadow: none;
 }
 </style>

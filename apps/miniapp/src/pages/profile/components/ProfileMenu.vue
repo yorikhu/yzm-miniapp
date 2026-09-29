@@ -6,12 +6,12 @@
       class="menu-row"
       @click="$emit('select', item.label)"
     >
-      <text class="menu-row__icon">{{ item.icon }}</text>
-      <view class="menu-row__body"
+      <text class="menu-row-icon">{{ item.icon }}</text>
+      <view class="menu-row-body"
         ><text>{{ item.label }}</text
         ><text>{{ item.meta }}</text></view
       >
-      <text class="menu-row__arrow">›</text>
+      <text class="menu-row-arrow">›</text>
     </view>
   </YzmCard>
 </template>
@@ -48,7 +48,7 @@ const menus = [
   border-bottom: 0;
 }
 
-.menu-row__icon {
+.menu-row-icon {
   display: flex;
   width: 44rpx;
   height: 44rpx;
@@ -60,7 +60,7 @@ const menus = [
   font-size: 18rpx;
 }
 
-.menu-row__body {
+.menu-row-body {
   display: flex;
   flex: 1;
   align-items: center;
@@ -68,12 +68,12 @@ const menus = [
   font-size: 24rpx;
 }
 
-.menu-row__body text:last-child {
+.menu-row-body text:last-child {
   color: var(--yzm-muted);
   font-size: 19rpx;
 }
 
-.menu-row__arrow {
+.menu-row-arrow {
   color: var(--yzm-muted);
   font-size: 36rpx;
 }

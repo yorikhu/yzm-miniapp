@@ -1,29 +1,29 @@
 <template>
   <YzmCard>
     <view class="composer">
-      <view class="composer__intro">
-        <view class="composer__animal" :class="{ 'composer__animal--moving': sending }">雀</view>
+      <view class="composer-intro">
+        <view class="composer-animal" :class="{ 'composer-animal-moving': sending }">雀</view>
         <view>
-          <text class="composer__title">写一封观察日记</text>
-          <text class="composer__hint">描述发生的事情，不评判情绪，让事实自己说话。</text>
+          <text class="composer-title">写一封观察日记</text>
+          <text class="composer-hint">描述发生的事情，不评判情绪，让事实自己说话。</text>
         </view>
       </view>
 
       <textarea
         v-model="content"
-        class="composer__input"
+        class="composer-input"
         maxlength="300"
         placeholder="此刻发生了什么？你观察到了什么？"
       />
 
-      <view v-if="suggestion" class="composer__suggestion">
-        <text class="composer__suggestion-label">内容建议</text>
+      <view v-if="suggestion" class="composer-suggestion">
+        <text class="composer-suggestion-label">内容建议</text>
         <text>{{ suggestion }}</text>
       </view>
 
-      <view class="composer__actions">
-        <button class="composer__voice" @click="startVoice">◎ 语音输入</button>
-        <text class="composer__count">{{ content.length }}/300</text>
+      <view class="composer-actions">
+        <button class="composer-voice" @click="startVoice">◎ 语音输入</button>
+        <text class="composer-count">{{ content.length }}/300</text>
         <YzmButton :disabled="content.length < 8 || sending" @click="submit">
           {{ sending ? '小雀送信中…' : '交给小雀' }}
         </YzmButton>
@@ -99,13 +99,13 @@ const submit = () => {
   padding: 28rpx;
 }
 
-.composer__intro {
+.composer-intro {
   display: flex;
   align-items: center;
   gap: 20rpx;
 }
 
-.composer__animal {
+.composer-animal {
   display: flex;
   flex: 0 0 76rpx;
   height: 76rpx;
@@ -118,28 +118,28 @@ const submit = () => {
   font-size: 27rpx;
 }
 
-.composer__animal--moving {
+.composer-animal-moving {
   animation: courier 0.7s ease-in-out infinite alternate;
 }
 
-.composer__title,
-.composer__hint {
+.composer-title,
+.composer-hint {
   display: block;
 }
 
-.composer__title {
+.composer-title {
   font-size: 30rpx;
   font-weight: 650;
 }
 
-.composer__hint {
+.composer-hint {
   margin-top: 6rpx;
   color: var(--yzm-muted);
   font-size: 20rpx;
   line-height: 1.5;
 }
 
-.composer__input {
+.composer-input {
   width: 100%;
   height: 230rpx;
   margin-top: 24rpx;
@@ -151,7 +151,7 @@ const submit = () => {
   line-height: 1.7;
 }
 
-.composer__suggestion {
+.composer-suggestion {
   margin-top: 16rpx;
   padding: 18rpx 20rpx;
   border-left: 5rpx solid var(--yzm-gold);
@@ -162,20 +162,20 @@ const submit = () => {
   line-height: 1.6;
 }
 
-.composer__suggestion-label {
+.composer-suggestion-label {
   margin-right: 12rpx;
   color: var(--yzm-gold);
   font-weight: 650;
 }
 
-.composer__actions {
+.composer-actions {
   display: flex;
   margin-top: 20rpx;
   align-items: center;
   gap: 14rpx;
 }
 
-.composer__voice {
+.composer-voice {
   margin: 0;
   padding: 0;
   color: var(--yzm-jade);
@@ -184,14 +184,14 @@ const submit = () => {
   line-height: 70rpx;
 }
 
-.composer__count {
+.composer-count {
   flex: 1;
   color: var(--yzm-muted);
   font-size: 19rpx;
   text-align: right;
 }
 
-.composer__actions :deep(.yzm-button) {
+.composer-actions :deep(.yzm-button) {
   min-height: 72rpx;
   padding: 0 26rpx;
   font-size: 23rpx;

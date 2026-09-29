@@ -1,27 +1,27 @@
 <template>
   <view class="app-header" :style="headerStyle">
-    <view class="app-header__inner" :class="{ 'app-header__inner--center': centered }">
+    <view class="app-header-inner" :class="{ 'app-header-inner-center': centered }">
       <view
         v-if="back"
-        class="app-header__back"
-        hover-class="app-header__back--pressed"
+        class="app-header-back"
+        hover-class="app-header-back-pressed"
         @click="goBack"
       >
-        <view class="app-header__back-icon" />
+        <view class="app-header-back-icon" />
       </view>
-      <view class="app-header__brand">
-        <image v-if="showLogo" class="app-header__logo" src="/static/logo.png" mode="aspectFill" />
-        <view class="app-header__copy">
-          <view class="app-header__heading">
-            <text class="app-header__title">{{ title }}</text>
-            <text v-if="badge !== undefined && badge !== ''" class="app-header__badge">{{
+      <view class="app-header-brand">
+        <image v-if="showLogo" class="app-header-logo" src="/static/logo.png" mode="aspectFill" />
+        <view class="app-header-copy">
+          <view class="app-header-heading">
+            <text class="app-header-title">{{ title }}</text>
+            <text v-if="badge !== undefined && badge !== ''" class="app-header-badge">{{
               badge
             }}</text>
           </view>
-          <text v-if="subtitle" class="app-header__subtitle">{{ subtitle }}</text>
+          <text v-if="subtitle" class="app-header-subtitle">{{ subtitle }}</text>
         </view>
       </view>
-      <view v-if="back" class="app-header__spacer" />
+      <view v-if="back" class="app-header-spacer" />
     </view>
   </view>
 </template>
@@ -88,42 +88,42 @@ const headerStyle = computed(() => ({
   width: 100%;
 }
 
-.app-header__inner {
+.app-header-inner {
   display: flex;
   min-height: 88rpx;
   margin-bottom: 24rpx;
   align-items: center;
 }
 
-.app-header__inner--center {
+.app-header-inner-center {
   justify-content: space-between;
 }
 
-.app-header__inner--center .app-header__brand {
+.app-header-inner-center .app-header-brand {
   flex: 1;
   justify-content: center;
   text-align: center;
 }
 
-.app-header__back,
-.app-header__spacer {
+.app-header-back,
+.app-header-spacer {
   flex: 0 0 64rpx;
   width: 64rpx;
   height: 64rpx;
 }
 
-.app-header__back {
+.app-header-back {
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
 }
 
-.app-header__back--pressed {
+.app-header-back-pressed {
   background: rgba(21, 94, 80, 0.08);
 }
 
-.app-header__back-icon {
+.app-header-back-icon {
   width: 20rpx;
   height: 20rpx;
   border-bottom: 3rpx solid var(--yzm-ink);
@@ -131,14 +131,14 @@ const headerStyle = computed(() => ({
   transform: rotate(45deg);
 }
 
-.app-header__brand {
+.app-header-brand {
   display: flex;
   min-width: 0;
   align-items: center;
   gap: 14rpx;
 }
 
-.app-header__logo {
+.app-header-logo {
   flex: 0 0 56rpx;
   width: 56rpx;
   height: 56rpx;
@@ -146,22 +146,22 @@ const headerStyle = computed(() => ({
   border-radius: 50%;
 }
 
-.app-header__copy {
+.app-header-copy {
   min-width: 0;
 }
 
-.app-header__heading {
+.app-header-heading {
   display: flex;
   align-items: center;
   gap: 10rpx;
 }
 
-.app-header__title,
-.app-header__subtitle {
+.app-header-title,
+.app-header-subtitle {
   display: block;
 }
 
-.app-header__title {
+.app-header-title {
   overflow: hidden;
   font-size: 34rpx;
   font-weight: 600;
@@ -170,7 +170,7 @@ const headerStyle = computed(() => ({
   white-space: nowrap;
 }
 
-.app-header__badge {
+.app-header-badge {
   flex-shrink: 0;
   min-width: 36rpx;
   height: 36rpx;
@@ -184,7 +184,7 @@ const headerStyle = computed(() => ({
   text-align: center;
 }
 
-.app-header__subtitle {
+.app-header-subtitle {
   overflow: hidden;
   margin-top: 2rpx;
   color: var(--yzm-muted);

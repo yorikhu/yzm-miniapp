@@ -2,18 +2,18 @@
   <view class="page-section">
     <SectionHeading eyebrow="ORIGIN" title="一片叶子的来处" />
     <YzmCard>
-      <view class="origin__landscape">
-        <view class="origin__sun" />
-        <view class="origin__mountain origin__mountain--back" />
-        <view class="origin__mountain origin__mountain--front" />
-        <text class="origin__location">北纬 22.2° · 云南景迈山</text>
+      <view class="origin-landscape">
+        <view class="origin-sun" />
+        <view class="origin-mountain origin-mountain-back" />
+        <view class="origin-mountain origin-mountain-front" />
+        <text class="origin-location">北纬 22.2° · 云南景迈山</text>
       </view>
-      <view class="origin__content">
-        <text class="origin__title">云海、古林与共生茶园</text>
-        <text class="origin__text">
+      <view class="origin-content">
+        <text class="origin-title">云海、古林与共生茶园</text>
+        <text class="origin-text">
           景迈山保存着古老的林下茶种植传统。茶树与高大乔木、香草和微生物共同生长，形成清晰的山野气韵与花蜜香。
         </text>
-        <view class="origin__chips"
+        <view class="origin-chips"
           ><text>千年古茶林</text><text>林下共生</text><text>手工采摘</text></view
         >
       </view>
@@ -30,14 +30,14 @@ import YzmCard from '@/components/base/YzmCard.vue';
 </script>
 
 <style scoped>
-.origin__landscape {
+.origin-landscape {
   position: relative;
   overflow: hidden;
   height: 290rpx;
   background: linear-gradient(180deg, #dbe4d7, #f2e7cd);
 }
 
-.origin__sun {
+.origin-sun {
   position: absolute;
   top: 38rpx;
   right: 62rpx;
@@ -47,7 +47,7 @@ import YzmCard from '@/components/base/YzmCard.vue';
   background: rgba(245, 225, 174, 0.85);
 }
 
-.origin__mountain {
+.origin-mountain {
   position: absolute;
   right: -10%;
   bottom: -120rpx;
@@ -58,19 +58,19 @@ import YzmCard from '@/components/base/YzmCard.vue';
   transform: rotate(7deg);
 }
 
-.origin__mountain--back {
+.origin-mountain-back {
   bottom: -150rpx;
   background: rgba(95, 126, 101, 0.45);
   transform: rotate(-9deg);
 }
 
-.origin__mountain--front {
+.origin-mountain-front {
   right: -28%;
   left: 20%;
   background: #486956;
 }
 
-.origin__location {
+.origin-location {
   position: absolute;
   bottom: 28rpx;
   left: 28rpx;
@@ -79,35 +79,35 @@ import YzmCard from '@/components/base/YzmCard.vue';
   letter-spacing: 2rpx;
 }
 
-.origin__content {
+.origin-content {
   padding: 28rpx;
 }
 
-.origin__title,
-.origin__text {
+.origin-title,
+.origin-text {
   display: block;
 }
 
-.origin__title {
+.origin-title {
   font-size: 31rpx;
   font-weight: 650;
 }
 
-.origin__text {
+.origin-text {
   margin-top: 15rpx;
   color: var(--yzm-ink-soft);
   font-size: 22rpx;
   line-height: 1.8;
 }
 
-.origin__chips {
+.origin-chips {
   display: flex;
   margin-top: 22rpx;
   flex-wrap: wrap;
   gap: 10rpx;
 }
 
-.origin__chips text {
+.origin-chips text {
   padding: 9rpx 16rpx;
   border-radius: 999rpx;
   color: var(--yzm-jade-dark);

@@ -1,27 +1,32 @@
 <template>
   <view class="success-page paper-texture">
-    <view class="success-page__content">
-      <view class="success-page__check">✓</view>
-      <text class="success-page__title">支付成功</text>
-      <text class="success-page__amount">¥{{ amount }} · 我们将尽快为您发出</text>
+    <view class="success-page-content">
+      <view class="success-page-check">✓</view>
+      <text class="success-page-title">支付成功</text>
+      <view class="success-page-amount">
+        <text>实付</text>
+        <text class="price">¥ {{ amount }}</text>
+      </view>
+      <text class="success-page-message">我们将尽快为您发出</text>
 
-      <YzmCard class="success-page__info">
+      <YzmCard class="success-page-info">
         <view
           ><text>订单号</text><text>{{ orderNumber }}</text></view
         >
         <view><text>配送</text><text>顺丰快递 · 预计 1–3 日送达</text></view>
       </YzmCard>
 
-      <view class="success-page__actions">
+      <view class="success-page-actions">
         <YzmButton variant="outline" block @click="goTab('profile')">查看订单</YzmButton>
         <YzmButton variant="ghost" block @click="goTab('mall')">继续逛逛</YzmButton>
       </view>
+
+      <view class="success-page-complete">
+        <YzmButton block @click="goTab('home')">完成</YzmButton>
+      </view>
     </view>
-    <view class="success-page__mountain success-page__mountain--one" />
-    <view class="success-page__mountain success-page__mountain--two" />
-    <view class="success-page__bottom"
-      ><YzmButton block @click="goTab('home')">完成</YzmButton></view
-    >
+    <view class="success-page-mountain success-page-mountain-one" />
+    <view class="success-page-mountain success-page-mountain-two" />
   </view>
 </template>
 
@@ -58,11 +63,11 @@ onLoad(loadPaymentAmount);
   position: relative;
   overflow: hidden;
   min-height: 100vh;
-  padding: calc(150rpx + env(safe-area-inset-top)) 38rpx calc(150rpx + env(safe-area-inset-bottom));
+  padding: calc(92rpx + env(safe-area-inset-top)) 38rpx calc(48rpx + env(safe-area-inset-bottom));
   background-color: var(--yzm-paper);
 }
 
-.success-page__content {
+.success-page-content {
   position: relative;
   z-index: 2;
   max-width: 760rpx;
@@ -70,70 +75,103 @@ onLoad(loadPaymentAmount);
   text-align: center;
 }
 
-.success-page__check {
+.success-page-check {
   display: flex;
-  width: 150rpx;
-  height: 150rpx;
+  width: 128rpx;
+  height: 128rpx;
   margin: 0 auto;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   color: #fff;
   background: linear-gradient(145deg, #247763, #0e5547);
-  box-shadow: 0 20rpx 50rpx rgba(14, 85, 71, 0.22);
+  box-shadow: 0 18rpx 44rpx rgba(14, 85, 71, 0.2);
   font-family: Arial, sans-serif;
-  font-size: 76rpx;
+  font-size: 66rpx;
 }
 
-.success-page__title,
-.success-page__amount {
+.success-page-title,
+.success-page-message {
   display: block;
 }
 
-.success-page__title {
-  margin-top: 42rpx;
-  font-size: 58rpx;
+.success-page-title {
+  margin-top: 32rpx;
+  font-size: 50rpx;
   font-weight: 650;
   letter-spacing: 4rpx;
 }
 
-.success-page__amount {
-  margin-top: 20rpx;
-  color: var(--yzm-muted);
-  font-size: 23rpx;
+.success-page-amount {
+  display: flex;
+  margin-top: 22rpx;
+  align-items: baseline;
+  justify-content: center;
+  color: var(--yzm-ink-soft);
+  font-size: 21rpx;
+  gap: 10rpx;
 }
 
-.success-page__info {
-  margin-top: 52rpx;
+.success-page-amount .price {
+  font-size: 38rpx;
+}
+
+.success-page-message {
+  margin-top: 8rpx;
+  color: var(--yzm-muted);
+  font-size: 21rpx;
+}
+
+.success-page-info {
+  margin-top: 38rpx;
   text-align: left;
 }
 
-.success-page__info view {
-  display: grid;
-  padding: 22rpx 28rpx;
-  grid-template-columns: 120rpx 1fr;
+.success-page-info view {
+  display: flex;
+  min-height: 86rpx;
+  padding: 20rpx 28rpx;
+  align-items: center;
   border-bottom: 1rpx solid var(--yzm-line);
   color: var(--yzm-ink-soft);
   font-size: 22rpx;
+  gap: 20rpx;
 }
 
-.success-page__info view:last-child {
+.success-page-info view:last-child {
   border-bottom: 0;
 }
 
-.success-page__info view text:first-child {
+.success-page-info view text:first-child {
+  flex: 0 0 100rpx;
   color: var(--yzm-ink);
   font-weight: 600;
 }
 
-.success-page__actions {
+.success-page-info view text:last-child {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.success-page-actions {
   display: grid;
-  margin-top: 36rpx;
+  margin-top: 28rpx;
   grid-template-columns: 1fr 1fr;
   gap: 16rpx;
 }
 
-.success-page__mountain {
+.success-page-actions :deep(.yzm-button),
+.success-page-complete :deep(.yzm-button) {
+  min-height: 78rpx;
+  font-size: 24rpx;
+}
+
+.success-page-complete {
+  margin-top: 20rpx;
+}
+
+.success-page-mountain {
   position: absolute;
   right: -18%;
   bottom: -130rpx;
@@ -144,21 +182,11 @@ onLoad(loadPaymentAmount);
   transform: rotate(7deg);
 }
 
-.success-page__mountain--two {
+.success-page-mountain-two {
   right: -40%;
   bottom: -180rpx;
   left: 20%;
   background: rgba(23, 63, 56, 0.11);
   transform: rotate(-7deg);
-}
-
-.success-page__bottom {
-  position: fixed;
-  z-index: 4;
-  right: 28rpx;
-  bottom: calc(20rpx + env(safe-area-inset-bottom));
-  left: 28rpx;
-  max-width: 920rpx;
-  margin: auto;
 }
 </style>

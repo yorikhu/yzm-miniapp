@@ -15,9 +15,9 @@
           @click="$emit('select', product.id)"
         >
           <ProductArtwork :tone="product.tone" :name="product.name" />
-          <text class="tea-mini__name">{{ product.name }}</text>
-          <text class="tea-mini__latitude">{{ product.latitude }}</text>
-          <text class="tea-mini__benefit">{{ product.subtitle }}</text>
+          <text class="tea-mini-name">{{ product.name }}</text>
+          <text class="tea-mini-latitude">{{ product.latitude }}</text>
+          <text class="tea-mini-benefit">{{ product.subtitle }}</text>
         </view>
       </view>
     </scroll-view>
@@ -59,26 +59,26 @@ defineEmits<{ shop: []; select: [id: string] }>();
   height: 205rpx;
 }
 
-.tea-mini__name,
-.tea-mini__latitude,
-.tea-mini__benefit {
+.tea-mini-name,
+.tea-mini-latitude,
+.tea-mini-benefit {
   display: block;
   padding: 0 8rpx;
 }
 
-.tea-mini__name {
+.tea-mini-name {
   margin-top: 18rpx;
   font-size: 28rpx;
   font-weight: 650;
 }
 
-.tea-mini__latitude {
+.tea-mini-latitude {
   margin-top: 5rpx;
   color: var(--yzm-gold);
   font-size: 18rpx;
 }
 
-.tea-mini__benefit {
+.tea-mini-benefit {
   margin-top: 10rpx;
   color: var(--yzm-muted);
   font-size: 19rpx;

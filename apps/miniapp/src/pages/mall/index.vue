@@ -3,8 +3,8 @@
     <AppHeader title="商城" subtitle="选一盏适合当下的茶" show-logo />
 
     <view class="search-bar">
-      <text class="search-bar__icon">⌕</text>
-      <input v-model="keyword" class="search-bar__input" placeholder="搜索茶名、香气或产地" />
+      <text class="search-bar-icon">⌕</text>
+      <input v-model="keyword" class="search-bar-input" placeholder="搜索茶名、香气或产地" />
     </view>
 
     <scroll-view v-if="categories?.length" scroll-x class="category-scroll">
@@ -12,8 +12,8 @@
         <text
           v-for="category in categories"
           :key="category"
-          class="category-list__item"
-          :class="{ 'category-list__item--active': activeCategory === category }"
+          class="category-list-item"
+          :class="{ 'category-list-item-active': activeCategory === category }"
           @click="activeCategory = category"
         >
           {{ category }}
@@ -23,11 +23,11 @@
 
     <view class="mall-banner paper-texture">
       <view>
-        <text class="mall-banner__eyebrow">SEASONAL TEA</text>
-        <text class="mall-banner__title">山风入盏，秋日正暖</text>
-        <text class="mall-banner__text">本月推荐 · 景迈功夫红</text>
+        <text class="mall-banner-eyebrow">SEASONAL TEA</text>
+        <text class="mall-banner-title">山风入盏，秋日正暖</text>
+        <text class="mall-banner-text">本月推荐 · 景迈功夫红</text>
       </view>
-      <view class="mall-banner__seal">秋</view>
+      <view class="mall-banner-seal">秋</view>
     </view>
 
     <view class="page-section product-list-section">
@@ -96,14 +96,14 @@ const openProduct = (product: Product) => goTo(`/pages/product/detail?id=${produ
   box-shadow: 0 8rpx 24rpx rgba(55, 45, 28, 0.05);
 }
 
-.search-bar__icon {
+.search-bar-icon {
   margin-right: 12rpx;
   color: var(--yzm-jade);
   font-family: Arial, sans-serif;
   font-size: 40rpx;
 }
 
-.search-bar__input {
+.search-bar-input {
   flex: 1;
   font-size: 25rpx;
 }
@@ -120,7 +120,7 @@ const openProduct = (product: Product) => goTo(`/pages/product/detail?id=${produ
   gap: 12rpx;
 }
 
-.category-list__item {
+.category-list-item {
   padding: 14rpx 24rpx;
   border: 1rpx solid var(--yzm-line);
   border-radius: 999rpx;
@@ -129,7 +129,7 @@ const openProduct = (product: Product) => goTo(`/pages/product/detail?id=${produ
   font-size: 22rpx;
 }
 
-.category-list__item--active {
+.category-list-item-active {
   color: #fff;
   border-color: var(--yzm-jade);
   background: var(--yzm-jade);
@@ -148,31 +148,31 @@ const openProduct = (product: Product) => goTo(`/pages/product/detail?id=${produ
   box-shadow: var(--yzm-shadow);
 }
 
-.mall-banner__eyebrow,
-.mall-banner__title,
-.mall-banner__text {
+.mall-banner-eyebrow,
+.mall-banner-title,
+.mall-banner-text {
   display: block;
 }
 
-.mall-banner__eyebrow {
+.mall-banner-eyebrow {
   color: #d9b976;
   font-size: 17rpx;
   letter-spacing: 4rpx;
 }
 
-.mall-banner__title {
+.mall-banner-title {
   margin-top: 14rpx;
   font-size: 36rpx;
   font-weight: 650;
 }
 
-.mall-banner__text {
+.mall-banner-text {
   margin-top: 12rpx;
   color: rgba(255, 255, 255, 0.7);
   font-size: 21rpx;
 }
 
-.mall-banner__seal {
+.mall-banner-seal {
   display: flex;
   width: 102rpx;
   height: 102rpx;

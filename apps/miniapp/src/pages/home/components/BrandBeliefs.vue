@@ -4,9 +4,9 @@
     <view class="belief-grid">
       <YzmCard v-for="item in beliefs" :key="item.index" flat>
         <view class="belief-card">
-          <text class="belief-card__index">{{ item.index }}</text>
-          <text class="belief-card__title">{{ item.title }}</text>
-          <text class="belief-card__text">{{ item.text }}</text>
+          <text class="belief-card-index">{{ item.index }}</text>
+          <text class="belief-card-title">{{ item.title }}</text>
+          <text class="belief-card-text">{{ item.text }}</text>
         </view>
       </YzmCard>
     </view>
@@ -39,25 +39,25 @@ const beliefs = [
   padding: 28rpx 26rpx;
 }
 
-.belief-card__index,
-.belief-card__title,
-.belief-card__text {
+.belief-card-index,
+.belief-card-title,
+.belief-card-text {
   display: block;
 }
 
-.belief-card__index {
+.belief-card-index {
   color: var(--yzm-gold);
   font-family: Georgia, serif;
   font-size: 22rpx;
 }
 
-.belief-card__title {
+.belief-card-title {
   margin-top: 16rpx;
   font-size: 27rpx;
   font-weight: 650;
 }
 
-.belief-card__text {
+.belief-card-text {
   margin-top: 14rpx;
   color: var(--yzm-muted);
   font-size: 20rpx;

@@ -1,7 +1,7 @@
 <template>
   <button
     class="yzm-button"
-    :class="[`yzm-button--${variant}`, { 'yzm-button--block': block }]"
+    :class="[`yzm-button-${variant}`, { 'yzm-button-block': block }]"
     :disabled="disabled"
     @click="$emit('click')"
   >
@@ -46,28 +46,28 @@ defineEmits<{ click: [] }>();
   transform: scale(0.98);
 }
 
-.yzm-button--block {
+.yzm-button-block {
   width: 100%;
 }
 
-.yzm-button--primary {
+.yzm-button-primary {
   color: #fffdf8;
   background: var(--yzm-jade);
   box-shadow: 0 8rpx 20rpx rgba(16, 75, 64, 0.12);
 }
 
-.yzm-button--outline {
+.yzm-button-outline {
   color: var(--yzm-jade-dark);
   border: 2rpx solid var(--yzm-jade);
   background: transparent;
 }
 
-.yzm-button--ghost {
+.yzm-button-ghost {
   color: var(--yzm-ink-soft);
   background: transparent;
 }
 
-.yzm-button--gold {
+.yzm-button-gold {
   color: #fffaf0;
   background: var(--yzm-gold);
 }

@@ -1,12 +1,12 @@
 <template>
   <view class="section-heading">
     <view>
-      <text v-if="eyebrow" class="section-heading__eyebrow">{{ eyebrow }}</text>
-      <view class="section-heading__title-row">
-        <text class="section-heading__title">{{ title }}</text>
+      <text v-if="eyebrow" class="section-heading-eyebrow">{{ eyebrow }}</text>
+      <view class="section-heading-title-row">
+        <text class="section-heading-title">{{ title }}</text>
       </view>
     </view>
-    <text v-if="action" class="section-heading__action" @click="$emit('action')"
+    <text v-if="action" class="section-heading-action" @click="$emit('action')"
       >{{ action }} ›</text
     >
   </view>
@@ -28,7 +28,7 @@ defineEmits<{ action: [] }>();
   justify-content: space-between;
 }
 
-.section-heading__eyebrow {
+.section-heading-eyebrow {
   display: block;
   margin-bottom: 10rpx;
   color: var(--yzm-gold);
@@ -36,14 +36,14 @@ defineEmits<{ action: [] }>();
   letter-spacing: 4rpx;
 }
 
-.section-heading__title {
+.section-heading-title {
   font-family: 'Songti SC', 'STSong', serif;
   font-size: 36rpx;
   font-weight: 600;
   letter-spacing: 3rpx;
 }
 
-.section-heading__action {
+.section-heading-action {
   padding: 10rpx 0;
   color: var(--yzm-ink-soft);
   font-size: 24rpx;
