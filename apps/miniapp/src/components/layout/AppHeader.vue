@@ -113,7 +113,7 @@ const headerStyle = computed(() => ({
 .app-header-inner {
   display: flex;
   min-height: 88rpx;
-  margin-bottom: 24rpx;
+  margin-bottom: 8rpx;
   align-items: center;
 }
 

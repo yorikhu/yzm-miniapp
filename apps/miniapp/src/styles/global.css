@@ -52,6 +52,10 @@ button::after {
   padding-bottom: calc(48rpx + env(safe-area-inset-bottom));
 }
 
+.page-main {
+  padding-top: 16rpx;
+}
+
 .page-section {
   margin-top: 52rpx;
 }

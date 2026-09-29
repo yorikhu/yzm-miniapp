@@ -1,18 +1,20 @@
 <template>
   <view class="page-shell">
     <AppHeader title="静心技法" subtitle="把注意力带回此刻" show-logo />
-    <PracticeHero />
+    <view class="page-main">
+      <PracticeHero />
 
-    <view class="page-section">
-      <SectionHeading eyebrow="GUIDED PRACTICE" title="跟随练习" />
-      <view class="media-list">
-        <MediaCard v-for="item in mockTechniques" :key="item.id" :technique="item" />
+      <view class="page-section">
+        <SectionHeading eyebrow="GUIDED PRACTICE" title="跟随练习" />
+        <view class="media-list">
+          <MediaCard v-for="item in mockTechniques" :key="item.id" :technique="item" />
+        </view>
       </view>
-    </view>
 
-    <MeditationGrid />
-    <ReadingList />
-    <JournalSection />
+      <MeditationGrid />
+      <ReadingList />
+      <JournalSection />
+    </view>
   </view>
 </template>
 

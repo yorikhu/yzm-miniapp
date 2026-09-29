@@ -3,57 +3,59 @@
     <AppHeader title="茶品详情" back centered sticky />
     <FloatingCartButton />
 
-    <view class="product-hero">
-      <ProductArtwork :tone="product.tone" :name="product.name" />
-      <view class="product-hero-badge">{{ product.origin }}</view>
-    </view>
+    <view class="page-main">
+      <view class="product-hero">
+        <ProductArtwork :tone="product.tone" :name="product.name" />
+        <view class="product-hero-badge">{{ product.origin }}</view>
+      </view>
 
-    <view class="product-main">
-      <text class="product-main-category">{{ product.category }} · {{ product.latitude }}</text>
-      <text class="product-main-title">{{ product.name }}</text>
-      <text class="product-main-subtitle">{{ product.subtitle }}</text>
-      <view class="product-main-meta">
-        <MoneyAmount :amount="selectedSku?.price ?? product.price" size="44rpx" />
-        <MoneyAmount
-          v-if="product.originalPrice"
-          :amount="product.originalPrice"
-          size="22rpx"
-          color="#a7aaa7"
-          strikethrough
-        />
-        <text class="product-main-sales">已售 {{ product.sales }}</text>
+      <view class="product-main">
+        <text class="product-main-category">{{ product.category }} · {{ product.latitude }}</text>
+        <text class="product-main-title">{{ product.name }}</text>
+        <text class="product-main-subtitle">{{ product.subtitle }}</text>
+        <view class="product-main-meta">
+          <MoneyAmount :amount="selectedSku?.price ?? product.price" size="44rpx" />
+          <MoneyAmount
+            v-if="product.originalPrice"
+            :amount="product.originalPrice"
+            size="22rpx"
+            color="#a7aaa7"
+            strikethrough
+          />
+          <text class="product-main-sales">已售 {{ product.sales }}</text>
+        </view>
       </view>
-    </view>
 
-    <YzmCard class="purchase-card">
-      <view class="purchase-card-section">
-        <text class="purchase-card-label">选择规格</text>
-        <ProductSkuPicker v-model="selectedSkuId" :skus="product.skus" />
-      </view>
-      <view class="purchase-card-quantity">
-        <text class="purchase-card-label">购买数量</text>
-        <QuantityStepper v-model="quantity" />
-      </view>
-      <view class="purchase-card-actions">
-        <YzmButton variant="outline" block @click="add">加入购物车</YzmButton>
-        <YzmButton block @click="buyNow">立即购买</YzmButton>
-      </view>
-    </YzmCard>
-
-    <view class="page-section">
-      <SectionHeading eyebrow="PRODUCT STORY" title="这一盏的故事" />
-      <YzmCard>
-        <view class="story">
-          <text class="story-lead">{{ product.coreBenefit }}</text>
-          <text class="story-body">{{ product.detail }}</text>
-          <view class="story-divider" />
-          <view class="story-notes">
-            <view><text>香气</text><text>花蜜香 · 山野气</text></view>
-            <view><text>茶汤</text><text>温润 · 清甜 · 耐泡</text></view>
-            <view><text>建议</text><text>90°C 水温 · 8 秒出汤</text></view>
-          </view>
+      <YzmCard class="purchase-card">
+        <view class="purchase-card-section">
+          <text class="purchase-card-label">选择规格</text>
+          <ProductSkuPicker v-model="selectedSkuId" :skus="product.skus" />
+        </view>
+        <view class="purchase-card-quantity">
+          <text class="purchase-card-label">购买数量</text>
+          <QuantityStepper v-model="quantity" />
+        </view>
+        <view class="purchase-card-actions">
+          <YzmButton variant="outline" block @click="add">加入购物车</YzmButton>
+          <YzmButton block @click="buyNow">立即购买</YzmButton>
         </view>
       </YzmCard>
+
+      <view class="page-section">
+        <SectionHeading eyebrow="PRODUCT STORY" title="这一盏的故事" />
+        <YzmCard>
+          <view class="story">
+            <text class="story-lead">{{ product.coreBenefit }}</text>
+            <text class="story-body">{{ product.detail }}</text>
+            <view class="story-divider" />
+            <view class="story-notes">
+              <view><text>香气</text><text>花蜜香 · 山野气</text></view>
+              <view><text>茶汤</text><text>温润 · 清甜 · 耐泡</text></view>
+              <view><text>建议</text><text>90°C 水温 · 8 秒出汤</text></view>
+            </view>
+          </view>
+        </YzmCard>
+      </view>
     </view>
   </view>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <view class="success-page paper-texture">
     <AppHeader title="支付结果" centered />
-    <view class="success-page-content">
+    <view class="success-page-content page-main">
       <view class="success-page-check">✓</view>
       <text class="success-page-title">支付成功</text>
       <view class="success-page-amount">

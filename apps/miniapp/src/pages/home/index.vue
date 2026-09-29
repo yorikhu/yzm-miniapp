@@ -1,12 +1,14 @@
 <template>
   <view class="page-shell">
     <AppHeader title="韵盏茗" subtitle="茶里见山，也见自己" show-logo />
-    <HomeHero @shop="goTab('mall')" @practice="goTab('practice')" />
-    <FounderStory />
-    <BrandBeliefs />
-    <OriginStory />
-    <CraftTimeline />
-    <TeaLatitude :products="mockProducts" @shop="goTab('mall')" @select="openProduct" />
+    <view class="page-main">
+      <HomeHero @shop="goTab('mall')" @practice="goTab('practice')" />
+      <FounderStory />
+      <BrandBeliefs />
+      <OriginStory />
+      <CraftTimeline />
+      <TeaLatitude :products="mockProducts" @shop="goTab('mall')" @select="openProduct" />
+    </view>
   </view>
 </template>
 

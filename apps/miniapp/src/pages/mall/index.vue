@@ -2,43 +2,45 @@
   <view class="page-shell">
     <AppHeader title="商城" subtitle="选一盏适合当下的茶" show-logo />
 
-    <view class="search-bar">
-      <text class="search-bar-icon">⌕</text>
-      <input v-model="keyword" class="search-bar-input" placeholder="搜索茶名、香气或产地" />
-    </view>
-
-    <scroll-view v-if="categories.length > 1" scroll-x class="category-scroll">
-      <view class="category-list">
-        <text
-          v-for="category in categories"
-          :key="category"
-          class="category-list-item"
-          :class="{ 'category-list-item-active': activeCategory === category }"
-          @click="activeCategory = category"
-        >
-          {{ category }}
-        </text>
+    <view class="page-main">
+      <view class="search-bar">
+        <text class="search-bar-icon">⌕</text>
+        <input v-model="keyword" class="search-bar-input" placeholder="搜索茶名、香气或产地" />
       </view>
-    </scroll-view>
 
-    <view class="mall-banner paper-texture">
-      <view>
-        <text class="mall-banner-eyebrow">SEASONAL TEA</text>
-        <text class="mall-banner-title">山风入盏，秋日正暖</text>
-        <text class="mall-banner-text">本月推荐 · 景迈功夫红</text>
+      <scroll-view v-if="categories.length > 1" scroll-x class="category-scroll">
+        <view class="category-list">
+          <text
+            v-for="category in categories"
+            :key="category"
+            class="category-list-item"
+            :class="{ 'category-list-item-active': activeCategory === category }"
+            @click="activeCategory = category"
+          >
+            {{ category }}
+          </text>
+        </view>
+      </scroll-view>
+
+      <view class="mall-banner paper-texture">
+        <view>
+          <text class="mall-banner-eyebrow">SEASONAL TEA</text>
+          <text class="mall-banner-title">山风入盏，秋日正暖</text>
+          <text class="mall-banner-text">本月推荐 · 景迈功夫红</text>
+        </view>
+        <view class="mall-banner-seal">秋</view>
       </view>
-      <view class="mall-banner-seal">秋</view>
-    </view>
 
-    <view class="page-section product-list-section">
-      <SectionHeading title="全部好茶" :eyebrow="`${filteredProducts.length} 款在售`" />
-      <view class="product-list">
-        <ProductCard
-          v-for="product in filteredProducts"
-          :key="product.id"
-          :product="product"
-          @select="openProduct"
-        />
+      <view class="page-section product-list-section">
+        <SectionHeading title="全部好茶" :eyebrow="`${filteredProducts.length} 款在售`" />
+        <view class="product-list">
+          <ProductCard
+            v-for="product in filteredProducts"
+            :key="product.id"
+            :product="product"
+            @select="openProduct"
+          />
+        </view>
       </view>
     </view>
   </view>

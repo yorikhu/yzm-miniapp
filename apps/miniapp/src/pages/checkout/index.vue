@@ -2,79 +2,81 @@
   <view class="page-shell page-shell-no-tab checkout-page">
     <AppHeader title="确认订单" back centered />
 
-    <YzmCard class="address-panel">
-      <view class="address-card">
-        <image class="address-card-avatar" src="/static/logo.png" mode="aspectFill" />
-        <view class="address-card-body">
-          <text class="address-card-name">茗主　138****6688</text>
-          <text class="address-card-text">云南省普洱市 · 澜沧县惠民镇景迈村 8 号</text>
+    <view class="page-main">
+      <YzmCard class="address-panel">
+        <view class="address-card">
+          <image class="address-card-avatar" src="/static/logo.png" mode="aspectFill" />
+          <view class="address-card-body">
+            <text class="address-card-name">茗主　138****6688</text>
+            <text class="address-card-text">云南省普洱市 · 澜沧县惠民镇景迈村 8 号</text>
+          </view>
+          <text class="address-card-arrow">›</text>
         </view>
-        <text class="address-card-arrow">›</text>
-      </view>
-    </YzmCard>
+      </YzmCard>
 
-    <view class="page-section checkout-section">
-      <SectionHeading title="商品清单" />
-      <YzmCard>
-        <view v-for="item in selectedItems" :key="item.id" class="order-item">
-          <view class="order-item-art"
-            ><ProductArtwork :tone="item.product.tone" :name="item.product.name"
-          /></view>
-          <view class="order-item-body">
-            <text class="order-item-name">{{ item.product.name }}</text>
-            <text class="order-item-sku"
-              >{{ findSku(item)?.name }} · {{ findSku(item)?.spec }}</text
+      <view class="page-section checkout-section">
+        <SectionHeading title="商品清单" />
+        <YzmCard>
+          <view v-for="item in selectedItems" :key="item.id" class="order-item">
+            <view class="order-item-art"
+              ><ProductArtwork :tone="item.product.tone" :name="item.product.name"
+            /></view>
+            <view class="order-item-body">
+              <text class="order-item-name">{{ item.product.name }}</text>
+              <text class="order-item-sku"
+                >{{ findSku(item)?.name }} · {{ findSku(item)?.spec }}</text
+              >
+            </view>
+            <view class="order-item-price">
+              <text>×{{ item.quantity }}</text>
+              <MoneyAmount
+                :amount="(findSku(item)?.price ?? item.product.price) * item.quantity"
+                size="25rpx"
+              />
+            </view>
+          </view>
+        </YzmCard>
+      </view>
+
+      <view class="option-section">
+        <YzmCard>
+          <view class="option-card">
+            <view class="option-row"
+              ><text>配送方式</text><text class="muted">顺丰快递 · 满额包邮 ›</text></view
             >
+            <view class="option-row"
+              ><text>订单备注</text><input v-model="remark" placeholder="冲泡或礼赠需求"
+            /></view>
           </view>
-          <view class="order-item-price">
-            <text>×{{ item.quantity }}</text>
-            <MoneyAmount
-              :amount="(findSku(item)?.price ?? item.product.price) * item.quantity"
-              size="25rpx"
-            />
-          </view>
-        </view>
-      </YzmCard>
-    </view>
-
-    <view class="option-section">
-      <YzmCard>
-        <view class="option-card">
-          <view class="option-row"
-            ><text>配送方式</text><text class="muted">顺丰快递 · 满额包邮 ›</text></view
-          >
-          <view class="option-row"
-            ><text>订单备注</text><input v-model="remark" placeholder="冲泡或礼赠需求"
-          /></view>
-        </view>
-      </YzmCard>
-    </view>
-
-    <view class="amount-section">
-      <YzmCard>
-        <view class="amount-card">
-          <view>
-            <text>商品总额</text>
-            <MoneyAmount :amount="total" size="22rpx" color="var(--yzm-ink-soft)" />
-          </view>
-          <view>
-            <text>运费</text>
-            <MoneyAmount :amount="0" size="22rpx" color="var(--yzm-ink-soft)" />
-          </view>
-          <view class="amount-card-total">
-            <text>实付</text>
-            <MoneyAmount :amount="total" size="34rpx" />
-          </view>
-        </view>
-      </YzmCard>
-    </view>
-
-    <view class="pay-bar">
-      <view class="pay-bar-amount">
-        <text>实付</text>
-        <MoneyAmount :amount="total" size="38rpx" />
+        </YzmCard>
       </view>
-      <YzmButton @click="pay">立即支付</YzmButton>
+
+      <view class="amount-section">
+        <YzmCard>
+          <view class="amount-card">
+            <view>
+              <text>商品总额</text>
+              <MoneyAmount :amount="total" size="22rpx" color="var(--yzm-ink-soft)" />
+            </view>
+            <view>
+              <text>运费</text>
+              <MoneyAmount :amount="0" size="22rpx" color="var(--yzm-ink-soft)" />
+            </view>
+            <view class="amount-card-total">
+              <text>实付</text>
+              <MoneyAmount :amount="total" size="34rpx" />
+            </view>
+          </view>
+        </YzmCard>
+      </view>
+
+      <view class="pay-bar">
+        <view class="pay-bar-amount">
+          <text>实付</text>
+          <MoneyAmount :amount="total" size="38rpx" />
+        </view>
+        <YzmButton @click="pay">立即支付</YzmButton>
+      </view>
     </view>
   </view>
 </template>

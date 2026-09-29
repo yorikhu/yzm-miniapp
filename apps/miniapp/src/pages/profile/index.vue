@@ -1,17 +1,19 @@
 <template>
   <view class="page-shell">
     <AppHeader title="我的" subtitle="与一盏茶相处的日子" />
-    <ProfileOverview :profile="mockProfile" />
-    <view class="profile-section">
-      <ProfileOrderPanel />
-    </view>
-    <view class="profile-section">
-      <ProfileMenu :coupons="mockProfile.coupons" @select="showComing" />
-    </view>
+    <view class="page-main">
+      <ProfileOverview :profile="mockProfile" />
+      <view class="profile-section">
+        <ProfileOrderPanel />
+      </view>
+      <view class="profile-section">
+        <ProfileMenu :coupons="mockProfile.coupons" @select="showComing" />
+      </view>
 
-    <view class="profile-quote">
-      <image src="/static/logo.png" mode="aspectFill" />
-      <text>愿每一次举杯，都更靠近真实的自己</text>
+      <view class="profile-quote">
+        <image src="/static/logo.png" mode="aspectFill" />
+        <text>愿每一次举杯，都更靠近真实的自己</text>
+      </view>
     </view>
   </view>
 </template>

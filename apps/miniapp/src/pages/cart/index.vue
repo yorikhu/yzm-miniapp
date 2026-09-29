@@ -2,47 +2,49 @@
   <view class="page-shell cart-page">
     <AppHeader title="购物车" subtitle="好茶已在盏边等你" :badge="`${items.length}件`" />
 
-    <view class="cart-list">
-      <YzmCard v-for="item in items" :key="item.id">
-        <CartProductRow
-          :item="item"
-          @toggle="toggleItem(item.id)"
-          @quantity="updateQuantity(item.id, $event)"
-        />
-      </YzmCard>
-    </view>
+    <view class="page-main">
+      <view class="cart-list">
+        <YzmCard v-for="item in items" :key="item.id">
+          <CartProductRow
+            :item="item"
+            @toggle="toggleItem(item.id)"
+            @quantity="updateQuantity(item.id, $event)"
+          />
+        </YzmCard>
+      </view>
 
-    <view class="checkout-bar">
-      <view class="checkout-bar-select" @click="toggleAll">
-        <view class="checkout-bar-check" :class="{ 'checkout-bar-check-active': allSelected }">
-          {{ allSelected ? '✓' : '' }}
+      <view class="checkout-bar">
+        <view class="checkout-bar-select" @click="toggleAll">
+          <view class="checkout-bar-check" :class="{ 'checkout-bar-check-active': allSelected }">
+            {{ allSelected ? '✓' : '' }}
+          </view>
+          <text>全选</text>
         </view>
-        <text>全选</text>
+        <view class="checkout-bar-summary">
+          <view class="checkout-bar-amount">
+            <text>合计</text><MoneyAmount :amount="total" size="32rpx" />
+          </view>
+          <view class="checkout-bar-tip" :class="{ 'checkout-bar-tip-fulfilled': isFreeShipping }">
+            <template v-if="isFreeShipping">
+              <text>已满</text>
+              <MoneyAmount :amount="freeShippingThreshold" size="18rpx" color="var(--yzm-jade)" />
+              <text>，享顺丰包邮</text>
+            </template>
+            <template v-else>
+              <text>满</text>
+              <MoneyAmount :amount="freeShippingThreshold" size="18rpx" />
+              <text>顺丰包邮，还差</text>
+              <MoneyAmount :amount="remainingShippingAmount" size="18rpx" />
+            </template>
+          </view>
+        </view>
+        <YzmButton :disabled="selectedCount === 0" @click="goCheckout">
+          <text>结算</text>
+          <text v-if="selectedCount > 0" class="checkout-bar-selected-count">{{
+            selectedCount
+          }}</text>
+        </YzmButton>
       </view>
-      <view class="checkout-bar-summary">
-        <view class="checkout-bar-amount">
-          <text>合计</text><MoneyAmount :amount="total" size="32rpx" />
-        </view>
-        <view class="checkout-bar-tip" :class="{ 'checkout-bar-tip-fulfilled': isFreeShipping }">
-          <template v-if="isFreeShipping">
-            <text>已满</text>
-            <MoneyAmount :amount="freeShippingThreshold" size="18rpx" color="var(--yzm-jade)" />
-            <text>，享顺丰包邮</text>
-          </template>
-          <template v-else>
-            <text>满</text>
-            <MoneyAmount :amount="freeShippingThreshold" size="18rpx" />
-            <text>顺丰包邮，还差</text>
-            <MoneyAmount :amount="remainingShippingAmount" size="18rpx" />
-          </template>
-        </view>
-      </view>
-      <YzmButton :disabled="selectedCount === 0" @click="goCheckout">
-        <text>结算</text>
-        <text v-if="selectedCount > 0" class="checkout-bar-selected-count">{{
-          selectedCount
-        }}</text>
-      </YzmButton>
     </view>
   </view>
 </template>
