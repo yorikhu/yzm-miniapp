@@ -1,5 +1,6 @@
 <template>
   <view class="success-page paper-texture">
+    <AppHeader title="支付结果" centered />
     <view class="success-page-content">
       <view class="success-page-check">✓</view>
       <text class="success-page-title">支付成功</text>
@@ -9,20 +10,26 @@
       </view>
       <text class="success-page-message">我们将尽快为您发出</text>
 
-      <YzmCard class="success-page-info">
-        <view
-          ><text>订单号</text><text>{{ orderNumber }}</text></view
-        >
-        <view><text>配送</text><text>顺丰快递 · 预计 1–3 日送达</text></view>
-      </YzmCard>
-
-      <view class="success-page-actions">
-        <YzmButton variant="outline" block @click="goTab('profile')">查看订单</YzmButton>
-        <YzmButton variant="ghost" block @click="goTab('mall')">继续逛逛</YzmButton>
+      <view class="success-page-info">
+        <YzmCard>
+          <view class="success-page-info-row"
+            ><text>订单号</text><text>{{ orderNumber }}</text></view
+          >
+          <view class="success-page-info-row"
+            ><text>配送</text><text>顺丰快递 · 预计 1–3 日送达</text></view
+          >
+        </YzmCard>
       </view>
 
-      <view class="success-page-complete">
-        <YzmButton block @click="goTab('home')">完成</YzmButton>
+      <view class="success-page-action-area">
+        <view class="success-page-actions">
+          <YzmButton variant="outline" block @click="goTab('profile')">查看订单</YzmButton>
+          <YzmButton variant="outline" block @click="goTab('mall')">继续逛逛</YzmButton>
+        </view>
+
+        <view class="success-page-complete">
+          <YzmButton block @click="goTab('home')">完成</YzmButton>
+        </view>
       </view>
     </view>
     <view class="success-page-mountain success-page-mountain-one" />
@@ -36,6 +43,7 @@
  */
 import { ref } from 'vue';
 import { onLoad } from '@dcloudio/uni-app';
+import AppHeader from '@/components/layout/AppHeader.vue';
 import YzmButton from '@/components/base/YzmButton.vue';
 import YzmCard from '@/components/base/YzmCard.vue';
 import { mockOrderNumber } from '@/services/mock/data';
@@ -61,17 +69,31 @@ onLoad(loadPaymentAmount);
 <style scoped>
 .success-page {
   position: relative;
+  display: flex;
+  width: 100%;
+  height: 100vh;
   overflow: hidden;
   min-height: 100vh;
-  padding: calc(92rpx + env(safe-area-inset-top)) 38rpx calc(48rpx + env(safe-area-inset-bottom));
+  padding-top: 0;
+  padding-right: 38rpx;
+  padding-bottom: 32rpx;
+  padding-left: 38rpx;
+  padding-bottom: calc(32rpx + constant(safe-area-inset-bottom));
+  padding-bottom: calc(32rpx + env(safe-area-inset-bottom));
+  flex-direction: column;
   background-color: var(--yzm-paper);
 }
 
 .success-page-content {
   position: relative;
   z-index: 2;
+  display: flex;
+  width: 100%;
   max-width: 760rpx;
+  min-height: 0;
   margin: 0 auto;
+  flex: 1;
+  flex-direction: column;
   text-align: center;
 }
 
@@ -127,7 +149,7 @@ onLoad(loadPaymentAmount);
   text-align: left;
 }
 
-.success-page-info view {
+.success-page-info-row {
   display: flex;
   min-height: 86rpx;
   padding: 20rpx 28rpx;
@@ -138,17 +160,17 @@ onLoad(loadPaymentAmount);
   gap: 20rpx;
 }
 
-.success-page-info view:last-child {
+.success-page-info-row:last-child {
   border-bottom: 0;
 }
 
-.success-page-info view text:first-child {
+.success-page-info-row text:first-child {
   flex: 0 0 100rpx;
   color: var(--yzm-ink);
   font-weight: 600;
 }
 
-.success-page-info view text:last-child {
+.success-page-info-row text:last-child {
   flex: 1;
   min-width: 0;
   overflow-wrap: anywhere;
@@ -156,19 +178,23 @@ onLoad(loadPaymentAmount);
 
 .success-page-actions {
   display: grid;
-  margin-top: 28rpx;
   grid-template-columns: 1fr 1fr;
   gap: 16rpx;
 }
 
 .success-page-actions :deep(.yzm-button),
 .success-page-complete :deep(.yzm-button) {
-  min-height: 78rpx;
+  min-height: 92rpx;
   font-size: 24rpx;
 }
 
+.success-page-action-area {
+  margin-top: auto;
+  padding-top: 64rpx;
+}
+
 .success-page-complete {
-  margin-top: 20rpx;
+  margin-top: 24rpx;
 }
 
 .success-page-mountain {
