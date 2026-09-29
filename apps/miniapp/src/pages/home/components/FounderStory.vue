@@ -1,6 +1,6 @@
 <template>
   <view class="page-section">
-    <SectionHeading eyebrow="FOUNDER" title="主理人 · 粥粥" />
+    <SectionHeading eyebrow="FOUNDER" title="主理人 · 子芯" />
     <YzmCard>
       <view class="founder">
         <image class="founder__image" src="/static/founder-placeholder.svg" mode="aspectFill" />
@@ -9,7 +9,7 @@
           <text class="founder__text">
             我想做一处不催促人的茶空间。你可以在这里喝一杯好茶，也可以暂时放下外界的声音，重新听见自己。
           </text>
-          <text class="founder__signature">— 粥粥，韵盏茗主理人</text>
+          <text class="founder__signature">— 子芯，韵盏茗主理人</text>
         </view>
       </view>
     </YzmCard>
