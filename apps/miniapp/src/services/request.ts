@@ -108,11 +108,11 @@ export const request = <TResponse, TData = unknown>(
       },
       timeout,
       success: (response: UniApp.RequestSuccessCallbackResult) => {
+        // 成功的状态码判断
         if (response.statusCode >= 200 && response.statusCode < 300) {
           resolve(response.data as TResponse);
           return;
         }
-
         const message = extractErrorMessage(response.data, `请求失败 (${response.statusCode})`);
         if (showErrorToast) showRequestError(message);
         reject(new ApiRequestError(message, response.statusCode, response.data));
