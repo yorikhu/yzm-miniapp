@@ -7,6 +7,10 @@
     { "path": "pages/checkout/index", "style": { "navigationStyle": "custom" } },
     { "path": "pages/payment/success", "style": { "navigationStyle": "custom" } },
     { "path": "pages/practice/index", "style": { "navigationStyle": "custom" } },
+    { "path": "pages/practice/sanzin/index", "style": { "navigationStyle": "custom" } },
+    { "path": "pages/practice/meditation/index", "style": { "navigationStyle": "custom" } },
+    { "path": "pages/practice/books/index", "style": { "navigationStyle": "custom" } },
+    { "path": "pages/practice/books/detail", "style": { "navigationStyle": "custom" } },
     { "path": "pages/profile/index", "style": { "navigationStyle": "custom" } }
   ],
   "globalStyle": {
