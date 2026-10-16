@@ -1,21 +1,27 @@
 <template>
   <view class="page-section">
-    <SectionHeading eyebrow="ORIGIN" title="一片叶子的来处" />
+    <SectionHeading eyebrow="ORIGIN" title="来自大自然的馈赠" />
     <YzmCard>
       <view class="origin-landscape">
         <view class="origin-sun" />
         <view class="origin-mountain origin-mountain-back" />
         <view class="origin-mountain origin-mountain-front" />
-        <text class="origin-location">北纬 22.2° · 云南景迈山</text>
+        <text class="origin-location">北纬 22.2°</text>
       </view>
       <view class="origin-content">
-        <text class="origin-title">云海、古林与共生茶园</text>
+        <text class="origin-title">高山云雾出好茶</text>
         <text class="origin-text">
-          景迈山保存着古老的林下茶种植传统。茶树与高大乔木、香草和微生物共同生长，形成清晰的山野气韵与花蜜香。
+          平均海拔1000米以上，平均气温18-22°，气候条件优越，冬暖夏凉，雨量充沛，土壤富含矿物质。
         </text>
         <view class="origin-chips"
-          ><text>千年古茶林</text><text>林下共生</text><text>手工采摘</text></view
+          ><text>千年古茶林</text><text>手工采摘</text><text>匠心工艺</text></view
         >
+      </view>
+      <view class="origin-categories">
+        <view v-for="item in categories" :key="item.name" class="origin-category">
+          <text class="origin-category-name">{{ item.name }}</text>
+          <text class="origin-category-text">{{ item.text }}</text>
+        </view>
       </view>
     </YzmCard>
   </view>
@@ -27,6 +33,17 @@
  */
 import SectionHeading from '@/components/base/SectionHeading.vue';
 import YzmCard from '@/components/base/YzmCard.vue';
+
+const categories = [
+  {
+    name: '有机茶',
+    text: '只做除草和修枝（古树不修枝），不用任何肥料。',
+  },
+  {
+    name: '头春茶',
+    text: '经一冬休眠积累，茶氨酸含量全年最高，故滋味鲜浓醇厚、金毫密披。',
+  },
+];
 </script>
 
 <style scoped>
@@ -113,5 +130,36 @@ import YzmCard from '@/components/base/YzmCard.vue';
   color: var(--yzm-jade-dark);
   background: rgba(23, 107, 89, 0.08);
   font-size: 19rpx;
+}
+
+.origin-categories {
+  display: flex;
+  padding: 4rpx 28rpx 28rpx;
+  flex-direction: column;
+}
+
+.origin-category {
+  padding: 22rpx 0;
+}
+
+.origin-category + .origin-category {
+  border-top: 1rpx solid rgba(21, 94, 80, 0.1);
+}
+
+.origin-category-name,
+.origin-category-text {
+  display: block;
+}
+
+.origin-category-name {
+  font-size: 27rpx;
+  font-weight: 650;
+}
+
+.origin-category-text {
+  margin-top: 12rpx;
+  color: var(--yzm-ink-soft);
+  font-size: 22rpx;
+  line-height: 1.8;
 }
 </style>

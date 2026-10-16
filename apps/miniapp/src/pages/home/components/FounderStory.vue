@@ -5,11 +5,11 @@
       <view class="founder">
         <image class="founder-image" src="/static/founder-placeholder.svg" mode="aspectFill" />
         <view class="founder-content">
-          <text class="founder-quote">“人性本恶，但我选善。”</text>
+          <text class="founder-quote">“知善恶，而择善”</text>
           <text class="founder-text">
-            我想做一处不催促人的茶空间。你可以在这里喝一杯好茶，也可以暂时放下外界的声音，重新听见自己。
+            我们大部分正常的普通人都有对美好生活的向往，只是每个人由于个体的差异和成长历程不同，对如何获得美好生活的方式方法不同。
           </text>
-          <text class="founder-signature">— 子芯，韵盏茗主理人</text>
+          <text class="founder-signature">— 子芯</text>
         </view>
       </view>
     </YzmCard>

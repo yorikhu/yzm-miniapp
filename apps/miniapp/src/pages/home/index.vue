@@ -1,9 +1,9 @@
 <template>
   <view class="page-shell">
-    <AppHeader title="韵盏茗" subtitle="茶里见山，也见自己" show-logo />
+    <AppHeader title="韵盏茗" subtitle="盏中有韵，见茶见自己" />
     <view class="page-main">
-      <HomeHero @shop="goTab('mall')" @practice="goTab('practice')" />
       <FounderStory />
+      <HomeHero @shop="goTab('mall')" @practice="goTab('practice')" />
       <BrandBeliefs />
       <OriginStory />
       <CraftTimeline />

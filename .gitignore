@@ -24,3 +24,10 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+
+# WorkBuddy workspace
+.workbuddy/
+
+# WeChat DevTools root configs (real config lives in apps/miniapp)
+/project.config.json
+/project.private.config.json
